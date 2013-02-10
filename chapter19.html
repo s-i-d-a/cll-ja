@@ -113,8 +113,8 @@
 </pre>
 中国語では、通常の文の形が異なっている。話題がまず延べられ、続いてその話題に対する記述が続く。（日本語にも話題の概念はあるが、日本語では接尾辞（訳注：助詞「は」）を付けることによって示す。他にも、様々な方法によって話題を明示する言語がある）。話題とは、その文が何に関するものか、ということを表す：
 <pre>
-<a id="e2" name="e2">4.2)</a>   这   消息       我  知道    了
-       zhe<sup>4</sup> xiao<sup>1</sup>xi<sup>2</sup>   wo<sup>3</sup> zhi<sup>1</sup>dao le
+<a id="e2" name="e4.2">4.2)</a>   这   消息       我  知道    了
+       zhe<sup>4</sup> xiao<sup>1</sup>xi<sup>1</sup>   wo<sup>3</sup> zhi<sup>1</sup>dao le
        このニュース      私 知っている [完了]
        このニュースに関しては、私は知っていた。
        このニュースはもう聞いたことがある。
@@ -125,46 +125,51 @@
 
 <p>ロジバンでは、シマヴォ “zo'u” (セルマホ ZOhU) を、話題 (スムティ) とコメント (ブリディ)を分割するために使う:</p>
 <pre>
-<a id="e3" name="e3">4.3)</a>   le nuzba zo'u mi ba'o djuno
-       The news : I [perfective] know.
+<a id="e3" name="e4.3">4.3)</a>   le nuzba zo'u mi ba'o djuno
+       このニュース : 私 [完了] 知っている.
 </pre>
-<a href="../4/#e3">Example 4.3</a> is the literal Lojban translation of <a href="../4/#e2">Example 4.2</a>. Of course, the topic-comment structure can be changed to a straightforward bridi structure:
+<a href="#e4.3">例 4.3</a>は、<a href="#e4.2">例 4.2</a>をロジバンに直訳したものだ。もちろんこの話題／記述構造は、通常のブリディ構造に変換することができる：
 <pre>
-<a id="e4" name="e4">4.4)</a>   mi ba'o djuno le nuzba
-       I [perfective] know the news.
+<a id="e4" name="e4.4">4.4)</a>   mi ba'o djuno le nuzba
+       私 [完了] 知っている そのニュース
 </pre>
-<a href="../4/#e4">Example 4.4</a> means the same as <a href="../4/#e3">Example 4.3</a>, and it is simpler. However, often the position of the topic in the place structure of the selbri within the comment is vague:
+<a href="#e4.4">例 4.4</a> は、<a href="#e4.3">例 4.3</a>と同じ意味であり、より単純である。しかし、記述のセルブリの持つ場所構造中での話題の位置は曖昧である：
+
 <pre>
-<a id="e5" name="e5">4.5)</a>   le finpe zo'u citka
-       the fish : eat
+<a id="e5" name="e4.5">4.5)</a>   le finpe zo'u citka
+       魚 : 食べる
 </pre>
-Is the fish eating or being eaten? The sentence doesn’t say. The Chinese equivalent of <a href="../4/#e5">Example 4.5</a> is:
+ここで魚は食べているのか食べられているのか、文からは分からない。<a href="#e4.5">例 4.5</a>の中国語版は:
 <pre>
-<a id="e6" name="e6">4.6)</a>   yu<sup>2</sup>    chi<sup>1</sup>
-       fish   eat
+<a id="e6" name="e4.6">4.6)</a>   鱼     吃
+       yu<sup>2</sup>    chi<sup>1</sup>
+       魚     食べる
 </pre>
-which is vague in exactly the same way.
-<p>Grammatically, it is possible to have more than one sumti before “zo'u”. This is not normally useful in topic-comment sentences, but is necessary in the other use of “zo'u”: to separate a quantifying section from a bridi containing quantified variables. This usage belongs to a discussion of quantifier logic in Lojban (see <a href="../../16/1/">Chapter 16</a>), but an example would be:</p>
+となり、同様に曖昧である。
+
+<p>文法的には、２つ以上のスムティが “zo'u” の前にあっても良い。これは話題／記述文では役に立たないが、“zo'u”のもう一つの用法、つまり量化変数を含むブリディを量化セクションから分ける用法には必要である。この用法は、ロジバンにおける量化論理の議論になるが（ <a href="chapter16.html">16章</a>を参照）、例は以下のようになる：</p>
+
 <pre>
-<a id="e7" name="e7">4.7)</a>   roda poi prenu ku'o su'ode zo'u de patfu da
-        For-all X which-are-persons, there-exists-a-Y such-that Y is the father of X.
-        Every person has a father.
+<a id="e7" name="e4.7">4.7)</a>   roda poi prenu ku'o su'ode zo'u de patfu da
+        全てのX ～である 人、Y が存在する： Y は X の父親
+        全ての人には、父親が存在する。
 </pre>
-The string of sumti before “zo'u” (called the “prenex”: see <a href="../../16/1/">Chapter 16</a>) may contain both a topic and bound variables:
+“zo'u” の前の文字列 (「冠頭」と呼ばれる。<a href="chapter16.html">16
+章</a>参照) は、話題と束縛変数の両方を含んでいても良い：
 <pre>
-<a id="e8" name="e8">4.8)</a>   loi patfu roda poi prenu ku'o
+<a id="e8" name="e4.8">4.8)</a>   loi patfu roda poi prenu ku'o
             su'ode zo'u de patfu da
-       For-the-mass-of fathers for-all X which-are-persons,
-            there-exists-a-Y such-that Y is the father of X.
-       As for fathers, every person has one.
+       ～の群 父親 全ての X ～である 人、
+            Y が存在する： Y は X の父親
+       父親は、全ての人に対して存在する。
 </pre>
-To specify a topic which affects more than one sentence, wrap the sentences in “tu'e ... tu'u” brackets and place the topic and the “zo'u” directly in front. This is the exception to the rule that a topic attaches directly to a sentence:
+２文以上に影響を与える話題を指定する時には、文を“tu'e ... tu'u”の括弧で囲み、その直前に話題と“zo'u”を置く。話題が直接文にくっつくという規則の例外である：
 <pre>
 <a id="e9" name="e9">4.9)</a>   loi jdini zo'u tu'e do ponse .inaja do djica [tu'u]
-       The-mass-of money :  ( [if] you possess, then you want )
-       Money: if you have it, you want it.
+       ～の群 お金 :  ( あなた 所有する ならば あたな 欲しい )
+       お金とは、持っていれば欲しくなるものである。
 </pre>
-Note: In Lojban, you do not “want money”; you “want to have money” or something of the sort, as the x2 place of “djica” demands an event. As a result, the straightforward rendering of <a href="../4/#e8">Example 4.8</a> without a topic is not:
+注意：ロジバンでは、「お金が欲しい」と言うのではなく「お金を持ちたい」と言う。“djica”の x2 の場所には出来事が必要だからだ。そのため、 <a href="../4/#e8">Example 4.8</a> without a topic is not:
 <pre>
 <a id="e10" name="e10">4.10)</a>  do ponse loi jdini .inaja do djica ri
        You possess money only-if you desire its-mere-existence.
