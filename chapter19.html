@@ -204,7 +204,7 @@
 <p>ロジバンの質問は英語のものとは似ても似つかない。真偽質問（...というのは真か）と「空白を埋めよ」質問の２つの基本的なタイプがある。真偽質問は、シマヴォ “xu” （セルマホ UI）をブリディの前もしくは具体的に聞いている部分の後に付けて作る：</p>
 
 <pre>
-<a id="e1" name="e1">5.1)</a>   xu do klama le zarci
+<a id="e1" name="e5.1">5.1)</a>   xu do klama le zarci
        [真偽?] あなた 行く ～へ 市場
        市場に行く（行った）のですか？
 </pre>
@@ -212,83 +212,616 @@
 <p>空白を埋める質問では、質問者にとって不明で答えを知りたいロジバン語句を表すシマヴォを使う。様々な空白を表す様々なセルマホを持つシマヴォがある。</p>
 <p>スムティが不明なとき、代スムティの一種である “ma” (セルマホ KOhA) を使って質問を作る：</p>
 <pre>
-<a id="e2" name="e2">5.2)</a>   ma klama le zarci
+<a id="e2" name="e5.2">5.2)</a>   ma klama le zarci
        [何のスムティ？] 行く ～へ 市場
        誰が市場へ行くのですか。
 </pre>
 もちろん、“ma” は x1 の場所である必要はない：
 <pre>
-<a id="e3" name="e3">5.3)</a>   do klama ma
+<a id="e3" name="e5.3">5.3)</a>   do klama ma
        あなた 行く [何のスムティ？]
        どこに行くのですか。
 </pre>
 これに対しては、単にスムティで答えれば良い。
 <pre>
-<a id="e4" name="e4">5.4)</a>   le zarci
+<a id="e4" name="e5.4">5.4)</a>   le zarci
        市場です。
 </pre>
 この場合、単一のスムティは正しい返答であるが、それ自体はブリディを構成しない。つまり、何も表明せず、前の空白つきのブリディを単に補完する役割を果たす。
 <p>１文に２個（以上）の “ma” が含まれていても良い：</p>
 <pre>
-<a id="e5" name="e5">5.5)</a>   ma klama ma
+<a id="e5" name="e5.5">5.5)</a>   ma klama ma
        誰がどこに行くのですか。
 </pre>
 答えは２つのスムティとなり、２つの“ma”シマヴォを順に埋める：
 <pre>
-<a id="e6" name="e6">5.6)</a>   mi le zarci
+<a id="e6" name="e5.6">5.6)</a>   mi le zarci
        私が、市場へ。
 </pre>
 <p>「それぞれ」を意味する非論理接続詞の“fa'u” (セルマホ JOI) を使うと、より複雑な例を作ることができる：</p>
 <pre>
-<a id="e7" name="e7">5.7)</a>   ma fa'u ma klama ma fa'u ma
+<a id="e7" name="e5.7">5.7)</a>   ma fa'u ma klama ma fa'u ma
        誰 と 誰 が、それぞれ どこ と どこに行くのですか。
 </pre>
 答えは、
 <pre>
-<a id="e8" name="e8">5.8)</a>   la djan. la marcas. le zarci le briju
+<a id="e8" name="e5.8">5.8)</a>   la djan. la marcas. le zarci le briju
        ジョン、マーシャ、市場、オフィス。
        ジョンとマーシャは、それぞれ、市場とオフィスに行く。
 </pre>
 のようなもにになるだろう。
-(Note: A mechanical substitution of <a href="../5/#e8">Example 5.8</a> into <a href="../5/#e7">Example 5.7</a> produces an ungrammatical result, because “* ... le zarci fa'u le briju” is ungrammatical Lojban: the first “le zarci” has to be closed with its proper terminator “ku”, for reasons explained in <a href="../../14/1/">Chapter 14</a>. This effect is not important: Lojban behaves as if all elided terminators have been supplied in both question and answer before inserting the latter into the former. The exchange is grammatical if question and answer are each separately grammatical.)
-<p>Questions to be answered with a selbri are expressed with “mo” of selma'o GOhA, which is a kind of pro-bridi:</p>
+(注：<a href="#e5.8">例 5.8</a>を機械的に<a href="#e5.7">例 5.7</a>に代入すると、非文法的になる。“* ... le zarci fa'u le briju”は、“le zarci”を終端詞 “ku” で閉じなければならないため文法的なロジバンではない（ <a href="chapter14.html">14章</a>において説明）。このことは重要ではない。ロジバンでは、質問文に答えを代入する時に、省略された終端詞が全て補われていると見なされる。質問と答えが両方文法的であれば、それを代入したものも文法的となる。)
+
+<p>セルブリで答える質問は、代ブリディの一種であるセルマホ GOhA の“mo”で表される。</p>
+
 <pre>
-<a id="e9" name="e9">5.9)</a>   la lojban. mo
-       Lojban [what selbri?]
-       What is Lojban?
+<a id="e9" name="e5.9">5.9)</a>   la lojban. mo
+       ロジバン [何のセルブリ]
+       ロジバンとは何ですか？
 </pre>
-Here the answerer is to supply some predicate which is true of Lojban. Such questions are extremely open-ended, due to the enormous range of possible predicate answers. The answer might be just a selbri, or might be a full bridi, in which case the sumti in the answer override those provided by the questioner. To limit the range of a “mo” question, make it part of a tanru.
-<p>Questions about numbers are expressed with “xo” of selma'o PA:</p>
+
+ここでは、ロジバンに関して真となる何らかのセルブリを答える。答えとなりうる述語の可能性は非常に多岐に及ぶため、このような質問は極めて自由回答的である。
+答えは、単一のセルブリかもしれないし、完全なブリディの可能性もある。その場合、答えのスムティは質問中のスムティを上書きする。“mo”のこの自由度を制限するには、タンルの一部にすると良い。(訳注：la lojban. mo bangu 「ロジバンはどのような言語ですか」など)
+
+<p>数に関する質問は、セルマホ PA の “xo”を使って表される。</p>
 <pre>
-<a id="e10" name="e10">5.10)</a>  do viska xo prenu
-       You saw [what number?] persons.
-       How many people did you see?
+<a id="e10" name="e5.10">5.10)</a>  do viska xo prenu
+       あなた 見る [何の数字?] 人
+       何人の人を見たのですか。
 </pre>
-The answer would be a simple number, another kind of non-bridi utterance:
+答えは、ここでもまた、非ブリディ型発話である、単一の数字となる：
+
 <pre>
 <a id="e11" name="e11">5.11)</a>  vomu
-       Forty-five.
+       ４５。
 </pre>
-<p>Fill-in-the-blank questions may also be asked about: logical connectives (using cmavo “ji” of A, “ge'i” of GA, “gi'i” of GIhA, “gu'i” of GUhA, or “je'i” of JA, and receiving an ek, gihek, ijek, or ijoik as an answer) — see <a href="../../14/1/">Chapter 14</a>; attitudes (using “pei” of UI, and receiving an attitudinal as an answer) — see <a href="../../13/1/">Chapter 13</a>; place structures (using “fi'a” of FA, and receiving a cmavo of FA as an answer) — see <a href="../../9/1/">Chapter 9</a>; tenses and modals (using “cu'e” of CUhE, and receiving any tense or BAI cmavo as an answer) — see <a href="../../9/1/">Chapter 9</a> and <a href="../../10/1/">Chapter 10</a>.</p>
-<p>Questions can be marked by placing “pau” (of selma'o UI) before the question bridi. See <a href="../../13/1/">Chapter 13</a> for details.</p>
-<p>The full list of non-bridi utterances suitable as answers to questions is:</p>
+<p>空欄を埋める型の質問は、他にも、
+  <ul>
+    <li>論理接続詞（セルマホ A の“ji”、GA の “ge'i”、 GIhA の “gi'i”、GUhA の “gu'i” JA の “je'i”を使う。それぞれ ek、 gihek、 ijek、 ijoikを答えとして取る; <a href="chapter14.html">14章</a>参照）</li>
+    <li>心態詞（セルマホ UI の “pei” を使い、心態詞を答えに取る; <a href="chapter13.html">13章</a>参照）</li>
+    <li>場所構造（セルマホ FA の “fi'a” を使い、FA のシマヴォを答えに取る; <a href="chapter09.html">9章</a>参照。</li>
+    <li>間制・法制（セルマホ CUhE の “cu'e”を使い、任意の間制もしくは BAI のシマヴォを答えに取る; <a href="chapter10.html">参照</a>。）</li>
+  </ul>
+  に対してもすることができる。
+</p>
+
+<p>質問は、“pau”（セルマホ UI）を質問ブリディの前に付けることで、明示することもできる。詳細については<a href="chapter13.html">13章</a>を参照のこと。</p>
+
+<p>以下は、質問に対する答えとして適切な非ブリディ発話の完全なリストである：</p>
+
 <ul>
-<li>any number of sumti (with elidable terminator “vau”, see <a href="../../6/1/">Chapter 6</a>)</li>
-<li>an ek or gihek (logical connectives, see <a href="../../14/1/">Chapter 14</a>)</li>
-<li>a number, or any mathematical expression placed in parentheses (see <a href="../../18/1/">Chapter 18</a>)</li>
-<li>a bare “na” negator (to negate some previously expressed bridi), or corresponding “ja'a” affirmer (see <a href="../../15/1/">Chapter 15</a>)</li>
-<li>a relative clause (to modify some previously expressed sumti, see <a href="../../8/1/">Chapter 8</a>)</li>
-<li>a prenex/topic (to modify some previously expressed bridi, see <a href="../../16/1/">Chapter 16</a>)</li>
-<li>linked arguments (beginning with “be” or “bei” and attached to some previously expressed selbri, often in a description,see <a href="../../5/1/">Chapter 5</a>)</li>
+<li>任意個のスムティ（省略可能な終端詞“vau”と共に。<a href="chapter06.html">6章</a>参照。）</li>
+<li>単一の ek もしくは gihek (論理接続詞; <a href="chapter14.html">14章</a>参照。)</li>
+
+<li>単一の数字、もしくは括弧で囲まれた任意の数式（<a href="chapter18.html">18章</a>参照）</li>
+<li>単一の否定詞“na”（直前のブリディを否定）、もしくは反対の肯定詞“ja'a”（直前のブリディを肯定; <a href="chapter15.html">15章</a>参照）</li>
+<li>関係節 （前に発話されたスムティを修飾する。<a href="chapter08.html">8章</a>参照。）</li>
+<li>冠頭・話題（前に発話されたブリディを修飾する。<a href="chapter16.html">16章</a>参照）</li>
+<li>項接続（“be” や “bei”で始まり、前に発話されたセルブリに付属する。<a href="chapter05.html">5章</a>）</li>
 </ul>
-At the beginning of a text, the following non-bridi are also permitted:
+
+テキストの始めでは、以下の非ブリディも許される：
 <ul>
-<li>one or more names (to indicate direct address without “doi”, see <a href="../../6/1/">Chapter 6</a>)</li>
-<li>indicators (to express a prevailing attitude, see <a href="../../13/1/">Chapter 13</a>)</li>
-<li>“nai” (to vaguely negate something or other, see <a href="../../15/1/">Chapter 15</a>)</li>
+  <li>１個以上の名前（“doi”を付けなくても、発話の相手を表す。<a href="chapter06.html">6章</a>参照）</li>
+  <li>心態詞 ( ### prevailing な心態を表す。<a href="chapter13.html">13章</a> 参照。)</li>
+<li> “nai” (曖昧に何かを否定する。<a href="chapter15.html">15章</a> 参照)</li>
 </ul>
-<p>Where not needed for the expression of answers, most of these are made grammatical for pragmatic reasons: people will say them in conversation, and there is no reason to rule them out as ungrammatical merely because most of them are vague.</p>
+
+<p>答えとして求められているところ以外でも、これらのほとんどは文法的とされている。これは、人々は会話でこのような発話をよくするため、単に曖昧だからといって除外することはない、という実用的な理由による。</p>
+
 <hr />
+
+<h3>6. 添字: XI</h3>
+<p>本節では、以下のシマヴォを取り扱う：</p>
+<pre>
+     xi      XI      添字
+</pre>
+シマヴォ “xi” （セルマホ XI）は、添字（数字やレルフ、もしくは括弧で囲ったメクソ）を表す。
+添字は、ほとんど全ての文法構造に付属させることができ、その構造のすぐ後（もしくは文法的に必要な終端詞の後）に置く。有限のシマヴォのリストを無限に拡張したり、通常のシマヴォのリストをさらに細かく区別する場合に使うことができる。本節では、添字が自然と使われるいくつかの場所について言及する。
+
+<p>ロジバンのギスムは、最大で５個の場所しか持たない：</p>
+<pre>
+<a id="e1" name="e6.1">6.1)</a>   mi cu klama le zarci le zdani le dargu le karce
+       私 行く 市場へ 家から 道を通って 車で
+</pre>
+そのため、セルマホ SE （セルブリに作用して場所の順番を変える）やセルマホ FA（各スムティに対して、場所の番号を示す）は、５個の場所を扱うのに十分なだけしか存在しない。x1 と x5 を入れ替える “xe”を使い、<a href="#6.1">例6.1</a> を転換すると、
+
+<pre>
+<a id="e2" name="e6.2">6.2)</a>   le karce cu xe klama le zarci le zdani le dargu mi
+       車は 行く手段 市場へ 家から 道を通って 私が
+</pre>
+となり、場所構造を並び替えると、
+<pre>
+<a id="e3" name="e3">6.3)</a>   fo le dargu fi le zdani fa mi fe le zarci fu le karce cu klama
+       道を通って、家から、私が、市場へ、車で、行く。
+</pre>
+となる。
+
+<a href="#6.1">例6.1</a>から<a href="#6.3">例6.3</a>は全て同じ意味である。しかし、抽象詞 “nu” を “klama” に適用した ルジヴォ “nunkla” を考えてみよう：
+
+<pre>
+<a id="e4" name="e6.4">6.4)</a>   la'edi'u cu nunkla
+            mi le zarci le zdani le dargu le karce
+       直前の文の内容 行くこと
+            私が 市場へ 家から 道を通って 車で
+</pre>
+
+<a href="#e6.4">例 6.4</a>は、“nunkla” には６つの場所（“klama” の５つと、イベントそのものを表す最初の１つ）があることを表している。<a href="#e6.2">例 6.2</a>のような変形をするには、x1 と x6 の場所を入れ替えるシマヴォが必要になる。このためには、SE の任意のシマヴォを、添字「６」と一緒に使うことである：
+
+<pre>
+<a id="e5" name="e6.5">6.5)</a>   le karce cu sexixa nunkla mi
+            le zarci le zdani le dargu la'edi'u
+       車で 行く出来事の交通手段である 私が
+            市場へ 家から 道を通って 直前の文の内容は
+</pre>
+同様に、６番目の場所タグも、FA の任意のシマヴォを添え字と一緒に使って作ることができる：
+<pre>
+<a id="e6" name="e6.6">6.6)</a>   fu le dargu fo le zdani fe mi fa la'edi'u
+            fi le zarci faxixa le karce cu nunkla
+       道を通って、家から、私が、直前の文の内容は
+            市場へ、車で、行くという出来事
+</pre>
+
+<a href="#e6.4">例 6.4</a>から<a href="#e6.6">例 6.6</a>もまた、全て同じ意味を表しており、自然言語の訳は非常にぎこちないが、どれか一つからその他を簡単に導出することができる。また、SE や FA の他のシマヴォで “sexixa” and “faxixa”を置き換えても意味は変わらない。“vexixa”は“sexixa”と同じ意味である。
+
+<p>ロジバンには、セルマホ KOhA に属する２つのグループの代スムティがある。ko'a シリーズは、
+  “goi”を使って束縛された、明示的に指定されたスムティを指す。一方、da シリーズは、存在・全称量化詞を表す（これらの概念は、<a href="chapter16.html">16章</a>においてより完全に説明している）</p>
+<p>ko'a シリーズには10個、da シリーズには3個のシマヴォがある。</p>
+<p>もしさらに多くのシマヴォが必要ならば、ko'a シリーズや da シリーズのどのシマヴォにも、添字を付けることができる：</p>
+<pre>
+<a id="e7" name="e7">6.7)</a>   daxivo
+       X 添字 4
+</pre>
+これは、da シリーズの最初の列の４番めの量化詞を表す。また、
+<pre>
+<a id="e8" name="e6.8">6.8)</a>   ko'ixipaso
+       何か3 添字 18
+</pre>
+は、ko'a シリーズの3番目の列の18番目の自由変数を表す。この手法を使えば、ko'a 型の代スムティに対して10個の列、da 型の代スムティに対して3個の列ができ、それぞれ任意の数に拡張できる。ここでの注意点は、上記の “sexixa” と “vexixa” の例と異なり、“daxivo” と “dexivo” は異なる代スムティと見なされるということである。セルマホ GOhA の bu'a シリーズと、代ブリディのギスム “broda”, “brode”, “brodi”, “brodo”, “brodu”に対しても、これと全く同じ扱いである。
+
+<p>レルフ詞に対する添字は、通常の数学と同じように、変数の数を増やすために使われる：</p>
+
+<pre>
+<a id="e9" name="e6.9">6.9)</a>   li xy.boixipa du li xy.boixire su'i xy.boixici
+       数字 x-添字-1 等しい 数字 x-添字-2 プラス x-添字-3
+       x<sub>1</sub>  = x<sub>2</sub>  + x<sub>3</sub>
+</pre>
+また、レルフ文字列は数式の外では文法的にも意味的にも ko'a シリーズの代スムティと等価であるため、代スムティの数を増やすためにも使われる。(<a href="#e6.9">例6.9</a>では、
+各“xy.”シマヴォの後に終端詞 “boi”が必要なことに注意しよう。この終端詞のおかげで、曖昧性なく添字を付けることができる。)
+
+<p>名前も、代スムティと似ており、同じ名前の２つの個体を区別するために添字を付けることができる：</p>
+<pre>
+<a id="e10" name="e6.10">6.10)</a>  la djan. xipa cusku lu mi'enai do li'u la djan. xire
+       ジョン<sub>1</sub> 表現する “私ではない あなた” ジョン<sub>2</sub> に。
+</pre>
+<p>添字を間制につけると、同じ一般のシマヴォで表現される、複数の時間や場所について話をすることができる。例えば、“puxipa” は過去におけるある一点を表し、“puxire”は（それより前もしくは後かもしれない）他の一点を表す、といった具合である。</p>
+
+<p>セルマホ NA のブリディ肯定語 “ja'a” に添字をつけると、いわゆるファジー真理値を表現できる。ロジバンでファジー論理（真偽値が、単なる真と偽ではなく、0から1の間の数字で表されるような命題）を作るには、通常、抽象詞 “jei” を使う：</p>
+
+<pre>
+<a id="e11" name="e6.11">6.11)</a>  li pimu jei mi ganra
+       数字 .5 は、真偽値である 私 広い
+</pre>
+
+しかし、慣例によって、“ja'a”に添字を付けてファジー真偽値を示す（もしくは、量を変える場合“na”につける）：
+<pre>
+<a id="e12" name="e12">6.12)</a>  mi ja'a xipimu ganra
+       私 本当に-添字-.5 広い
+</pre>
+<p>最後に、2節で述べたように、対応する添字を持つ “ni'o”、“no'i” は、それぞれ、ある話題の開始と再開を表す。異なる添字を使うと、異なる話題を扱うことができる。</p>
+
+<p>将来、添字の他の使い方が考え出されるのは間違いない。</p>
+<hr />
+
+<h3>7. Utterance ordinals: MAI</h3>
+<p>The following cmavo are discussed in this section:</p>
+<pre>
+     mai     MAI     utterance ordinal, -thly
+     mo'o    MAI     higher order utterance ordinal
+</pre>
+<p>Numerical free modifiers, corresponding to English “firstly”, “secondly”, and so on, can be created by suffixing “mai” or “mo'o” of selma'o MAI to a number or a lerfu string. Here are some examples:</p>
+<pre>
+<a id="e1" name="e1">7.1)</a>   mi klama pamai le zarci .e remai le zdani
+       I go-to (firstly) the store and (secondly) the house.
+</pre>
+This does not imply that I go to the store before I go to the house: that meaning requires a tense. The sumti are simply numbered for convenience of reference. Like other free modifiers, the utterance ordinals can be inserted almost anywhere in a sentence without affecting its grammar or its meaning.
+<p>Any of the Lojban numbers can be used with MAI: “romai”, for example, means “all-thly” or “lastly”. Likewise, if you are enumerating a long list and have forgotten which number is wanted next, you can say “ny.mai”, or “Nthly”.</p>
+<p>The difference between “mai” and “mo'o” is that “mo'o” enumerates larger subdivisions of a text; “mai” was designed for lists of numbered items, whereas “mo'o” was intended to subdivide structured works. If this chapter were translated into Lojban, it might number each section with “mo'o”: this section would then be introduced with “zemo'o”, or “Section 7.”</p>
+<hr />
+
+<h3>8. Attitude scope markers: FUhE/FUhO</h3>
+<p>The following cmavo are discussed in this section:</p>
+<pre>
+     fu'e    FUhE    open attitudinal scope
+     fu'o    FUhO    close attitudinal scope
+</pre>
+<p>Lojban has a complex system of “attitudinals”, words which indicate the speaker’s attitude to what is being said. The attitudinals include indicators of emotion, intensity markers, discursives (which show the structure of discourse), and evidentials (which indicate “how the speaker knows”). Most of these words belong to selma'o UI; the intensity markers belong to selma'o CAI for historical reasons, but the two selma'o are grammatically identical. The individual cmavo of UI and CAI are discussed in <a href="../../13/1/">Chapter 13</a>; only the rules for applying them in discourse are presented here.</p>
+<p>Normally, an attitudinal applies to the preceding word only. However, if the preceding word is a structural cmavo which begins or ends a whole construction, then that whole construction is affected by the attitudinal:</p>
+<pre>
+<a id="e1" name="e1">8.1)</a>   mi viska le blanu .ia zdani [ku]
+       I see the blue [belief] house.
+       I see the house, which I believe to be blue.
+
+<a id="e2" name="e2">8.2)</a>   mi viska le blanu zdani .ia [ku]
+       I see the blue house [belief].
+       I see the blue thing, which I believe to be a house.
+
+<a id="e3" name="e3">8.3)</a>   mi viska le .ia blanu zdani [ku]
+       I see the [belief] blue house
+       I see what I believe to be a blue house.
+
+<a id="e4" name="e4">8.4)</a>   mi viska le blanu zdani ku .ia
+       I see (the blue house) [belief]
+       I see what I believe to be a blue house.
+</pre>
+An attitudinal meant to cover a whole sentence can be attached to the preceding “.i”, expressed or understood:
+<pre>
+<a id="e5" name="e5">8.5)</a>   [.i] .ia mi viska le blanu zdani
+       [belief] I see the blue house.
+       I believe I see a blue house.
+</pre>
+or to an explicit “vau” placed at the end of a bridi.
+<p>Likewise, an attitudinal meant to cover a whole paragraph can be attached to “ni'o” or “no'i”. An attitudinal at the beginning of a text applies to the whole text.</p>
+<p>However, sometimes it is necessary to be more specific about the range of one or more attitudinals, particularly if the range crosses the boundaries of standard Lojban syntactic constructions. The cmavo “fu'e” (of selma'o FUhE) and “fu'o” (of selma'o FUhO) provide explicit scope markers. Placing “fu'e” in front of an attitudinal disconnects it from what precedes it, and instead says that it applies to all following words until further notice. The notice is given by “fu'o”, which can appear anywhere and cancels all in-force attitudinals. For example:</p>
+<pre>
+<a id="e6" name="e6">8.6)</a>   mi viska le fu'e .ia blanu zdani fu'o ponse
+       I see the [start] [belief] blue house [end] possessor
+       I see the owner of what I believe to be a blue house.
+</pre>
+Here, only the “blanu zdani” portion of the three-part tanru “blanu zdani ponse” is marked as a belief of the speaker. Naturally, the attitudinal scope markers do not affect the rules for interpreting multi-part tanru: “blanu zdani” groups first because tanru group from left to right unless overridden with “ke” or “bo”.
+<p>Other attitudinals of more local scope can appear after attitudinals marked by FUhE; these attitudinals are added to the globally active attitudinals rather than superseding them.</p>
+<hr />
+
+<h3>9. Quotations: LU, LIhU, LOhU, LEhU</h3>
+<p>The following cmavo are discussed in this section:</p>
+<pre>
+     lu      LU      begin quotation
+     li'u    LIhU    end quotation
+     lo'u    LOhU    begin error quotation
+     le'u    LEhU    end error quotation
+</pre>
+<p>Grammatically, quotations are very simple in Lojban: all of them are sumti, and they all mean something like “the piece of text here quoted”:</p>
+<pre>
+<a id="e1" name="e1">9.1)</a>   mi pu cusku lu mi'e djan [li'u]
+       I [past] express [quote] I-am John [unquote]
+       I said, “I’m John”.
+</pre>
+But in fact there are four different flavors of quotation in the language, involving six cmavo of six different selma'o. This being the case, quotation deserves some elaboration.
+<p>The simplest kind of quotation, exhibited in <a href="../9/#e1">Example 9.1</a>, uses the cmavo “lu” (of selma'o LU) as the opening quotation mark, and the cmavo “li'u” (of selma'o LIhU) as the closing quotation mark. The text between “lu” and “li'u” must be a valid, parseable Lojban text. If the quotation is ungrammatical, so is the surrounding expression. The cmavo “li'u” is technically an elidable terminator, but it’s almost never possible to elide it except at the end of text.</p>
+<p>The cmavo “lo'u” (of selma'o LOhU) and “le'u” (of selma'o LEhU) are used to surround a quotation that is not necessarily grammatical Lojban. However, the text must consist of morphologically correct Lojban words (as defined in <a href="../../4/1/">Chapter 4</a>), so that the “le'u” can be picked out reliably. The words need not be meaningful, but they must be recognizable as cmavo, brivla, or cmene. Quotation with “lo'u” is essential to quoting ungrammatical Lojban for teaching in the language, the equivalent of the * that is used in English to mark such errors:</p>
+<pre>
+<a id="e2" name="e2">9.2)</a>   lo'u mi du do du la djan. le'u na tergerna la lojban.
+       [quote] mi du do du la djan. [unquote] is-not a-grammatical-structure in Lojban.
+</pre>
+<a href="../9/#e2">Example 9.2</a> is grammatical even though the embedded quotation is not. Similarly, “lo'u” quotation can quote fragments of a text which themselves do not constitute grammatical utterances:
+<pre>
+<a id="e3" name="e3">9.3)</a>   lu le mlatu cu viska le finpe li'u zo'u lo'u viska le le'u
+            cu selbasti .ei lo'u viska lo le'u
+       [quote] le mlatu cu viska le finpe [unquote] : [quote] viska le [unquote]
+            is-replaced-by [obligation!] [quote] viska lo [unquote].
+       In the sentence “le mlatu viska le finpe”, “viska le” should be replaced by “viska lo”.
+</pre>
+Note the topic-comment formulation (<a href="../4/">Section 4</a>) and the indicator applying to the selbri only (<a href="../8/">Section 8</a>). Neither “viska le” nor “viska lo” is a valid Lojban utterance, and both require “lo'u” quotation.
+<p>Additionally, pro-sumti or pro-bridi in the quoting sentence can refer to words appearing in the quoted sentence when “lu ... li'u” is used, but not when “lo'u ... le'u” is used:</p>
+<pre>
+<a id="e4" name="e4">9.4)</a>   la tcarlis. cusku lu le ninmu cu morsi li'u
+            .iku'i ri jmive
+       Charlie says [quote] the woman is-dead [unquote].
+            However, the-last-mentioned is-alive.
+       Charlie says “The woman is dead”, but she is alive.
+</pre>
+In <a href="../9/#e4">Example 9.4</a>, “ri” is a pro-sumti which refers to the most recent previous sumti, namely “le ninmu”. Compare:
+<pre>
+<a id="e5" name="e5">9.5)</a>   la tcarlis. cusku lo'u le ninmu cu morsi le'u
+            .iku'i ri jmive
+       Charlie says [quote] le ninmu cu morsi [unquote].
+            However, the-last-mentioned is-alive.
+       Charlie says “le ninmu cu morsi”, but he is alive.
+</pre>
+In <a href="../9/#e5">Example 9.5</a>, “ri” cannot refer to the referent of the alleged sumti “le ninmu”, because “le ninmu cu morsi” is a mere uninterpreted sequence of Lojban words. Instead, “ri” ends up referring to the referent of the sumti “la tcarlis.”, and so it is Charlie who is alive.
+<p>The metalinguistic erasers “si”, “sa”, and “su”, discussed in <a href="../13/">Section 13</a>, do not operate in text between “lo'u” and “le'u”. Since the first “le'u” terminates a “lo'u” quotation, it is not directly possible to have a “lo'u” quotation within another “lo'u” quotation. However, it is possible for a “le'u” to occur within a “lo'u ... le'u” quotation by preceding it with the cmavo “zo”, discussed in <a href="../10/">Section 10</a>. Note that “le'u” is not an elidable terminator; it is required.</p>
+<hr />
+
+<h3>10. More on quotations: ZO, ZOI</h3>
+<p>The following cmavo are discussed in this section:</p>
+<pre>
+     zo      ZO      quote single word
+     zoi     ZOI     non-Lojban quotation
+     la'o    ZOI     non-Lojban name
+</pre>
+<p>The cmavo “zo” (of selma'o ZO) is a strong quotation mark for the single following word, which can be any Lojban word whatsoever. Among other uses, “zo” allows a metalinguistic word to be referenced without having it act on the surrounding text. The word must be a morphologically legal (but not necessarily meaningful) single Lojban word; compound cmavo are not permitted. For example:</p>
+<pre>
+<a id="e1" name="e1">10.1)</a>  zo si cu lojbo valsi
+       “si” is a Lojbanic word.
+</pre>
+Since “zo” acts on a single word only, there is no corresponding terminator. Brevity, then, is a great advantage of “zo”, since the terminators for other kinds of quotation are rarely or never elidable.
+<p>The cmavo “zoi” (of selma'o ZOI) is a quotation mark for quoting non-Lojban text. Its syntax is “zoi X. text .X”, where X is a Lojban word (called the delimiting word) which is separated from the quoted text by pauses, and which is not found in the written text or spoken phoneme stream. It is common, but not required, to use the lerfu word (of selma'o BY) which corresponds to the Lojban name of the language being quoted:</p>
+<pre>
+<a id="e2" name="e2">10.2)</a>  zoi gy. John is a man .gy. cu glico jufra
+       “John is a man” is an English sentence.
+</pre>
+where “gy” stands for “glico”. Other popular choices of delimiting words are “.kuot.”, a Lojban name which sounds like the English word “quote”, and the word “zoi” itself. Another possibility is a Lojban word suggesting the topic of the quotation.
+<p>Within written text, the Lojban written word used as a delimiting word may not appear, whereas within spoken text, the sound of the delimiting word may not be uttered. This leads to occasional breakdowns of audio-visual isomorphism: <a href="../10/#e3">Example 10.3</a> is fine in speech but ungrammatical as written, whereas <a href="../10/#e4">Example 10.4</a> is correct when written but ungrammatical in speech.</p>
+<pre>
+<a id="e3" name="e3">10.3)</a>  ?mi djuno fi le valsi po'u zoi gy. gyrations .gy.
+       I know about the word which-is “gyrations”.
+
+<a id="e4" name="e4">10.4)</a>  ?mi djuno fi le valsi po'u zoi jai. gyrations .jai
+       I know about the word which-is “gyrations”.
+</pre>
+The text “gy” appears in the written word “gyrations”, whereas the sound represented in Lojban by “jai” appears in the spoken word “gyrations”. Such borderline cases should be avoided as a matter of good style.
+<p>It should be noted particularly that “zoi” quotation is the only way to quote rafsi, specifically CCV rafsi, because they are not Lojban words, and “zoi” quotation is the only way to quote things which are not Lojban words. (CVC and CVV rafsi look like names and cmavo respectively, and so can be quoted using other methods.) For example:</p>
+<pre>
+<a id="e5" name="e5">10.5)</a>  zoi ry. sku .ry. cu rafsi zo cusku
+       “sku” is a rafsi of “cusku”.
+</pre>
+<p>(A minor note on interaction between “lo'u ... le'u” and “zoi”: The text between “lo'u” and “le'u” should consist of Lojban words only. In fact, non-Lojban material in the form of a “zoi” quotation may also appear. However, if the word “le'u” is used either as the delimiting word for the “zoi” quotation, or within the quotation itself, the outer “lo'u” quotation will be prematurely terminated. Therefore, “le'u” should be avoided as the delimiting word in any “zoi” quotation.)</p>
+<p>Lojban strictly avoids any confusion between things and the names of things:</p>
+<pre>
+<a id="e6" name="e6">10.6)</a>  zo .bab. cmene la bab.
+       The-word “Bob” is-the-name-of the-one-named Bob.
+</pre>
+In <a href="../10/#e6">Example 10.6</a>, “zo .bab.” is the word, whereas “la bab.” is the thing named by the word. The cmavo “la'e” and “lu'e” (of selma'o LAhE) convert back and forth between references and their referents:
+<pre>
+<a id="e7" name="e7">10.7)</a>  zo .bab. cmene la'e zo .bab.
+       The-word “Bob” is-the-name-of the-referent-of the-word “Bob”.
+
+<a id="e8" name="e8">10.8)</a>  lu'e la bab. cmene la bab.
+       A-symbol-for Bob is-the-name-of Bob.
+</pre>
+<a href="../10/#e6">Examples 10.6</a> through <a href="../10/#e8">10.8</a> all mean approximately the same thing, except for differences in emphasis. <a href="../10/#e9">Example 10.9</a> is different:
+<pre>
+<a id="e9" name="e9">10.9)</a>  la bab. cmene la bab.
+       Bob is the name of Bob.
+</pre>
+and says that Bob is both the name and the thing named, an unlikely situation. People are not names.
+<p>(In <a href="../10/#e6">Examples 10.6</a> through <a href="../10/#e7">10.7</a>, the name “bab.” was separated from a preceding “zo” by a pause, thus: “zo .bab.”. The reason for this extra pause is that all Lojban names must be separated by pause from any preceding word other than “la”, “lai”, “la'i” (all of selma'o LA) and “doi” (of selma'o DOI). There are numerous other cmavo that may precede a name: of these, “zo” is one of the most common.)</p>
+<p>The cmavo “la'o” also belongs to selma'o ZOI, and is mentioned here for completeness, although it does not signal the beginning of a quotation. Instead, “la'o” serves to mark non-Lojban names, especially the Linnaean binomial names (such as “Homo sapiens”) which are the internationally standardized names for species of animals and plants. Internationally known names which can more easily be recognized by spelling rather than pronunciation, such as “Goethe”, can also appear in Lojban text with “la'o”:</p>
+<pre>
+<a id="e10" name="e10">10.10)</a> la'o dy. Goethe .dy. cu me la'o ly. Homo sapiens .ly.
+       Goethe is a Homo sapiens.
+</pre>
+Using “la'o” for all names rather than Lojbanizing, however, makes for very cumbersome text. A rough equivalent of “la'o” might be “la me zoi”.
+<hr />
+
+<h3>11. Contrastive emphasis: BAhE</h3>
+<p>The following cmavo are discussed in this section:</p>
+<pre>
+     ba'e    BAhE    emphasize next word
+     za'e    BAhE    next word is nonce
+</pre>
+<p>English often uses strong stress on a word to single it out for contrastive emphasis, thus</p>
+<pre>
+<a id="e1" name="e1">11.1)</a>  I saw George.
+</pre>
+is quite different from
+<pre>
+<a id="e2" name="e2">11.2)</a>  I saw <i>George</i>.
+</pre>
+The heavy stress on “<i>George</i>” (represented in writing by <i>italics</i>) indicates that I saw George rather than someone else. Lojban does not use stress in this way: stress is used only to help separate words (because every brivla is stressed on the penultimate syllable) and in names to match other languages’ stress patterns. Note that many other languages do not use stress in this way either; typically word order is rearranged, producing something like
+<pre>
+<a id="e3" name="e3">11.3)</a>  It was George whom I saw.
+</pre>
+<p>In Lojban, the cmavo “ba'e” (of selma'o BAhE) precedes a single word which is to be emphasized:</p>
+<pre>
+<a id="e4" name="e4">11.4)</a>  mi viska la ba'e .djordj.
+       I saw the-one-named [emphasis] “George”.
+       I saw <i>George</i>.
+</pre>
+<p>Note the pause before the name “djordj.”, which serves to separate it unambiguously from the “ba'e”. Alternatively, the “ba'e” can be moved to a position before the “la”, which in effect emphasizes the whole construct “la djordj.”:</p>
+<pre>
+<a id="e5" name="e5">11.5)</a>  mi viska ba'e la djordj.
+       I saw [emphasis] the-one-named “George”.
+       I saw <i>George</i>.
+</pre>
+Marking a word with a cmavo of BAhE does not change the word’s grammar in any way. Any word in a bridi can receive contrastive emphasis marking:
+<pre>
+<a id="e6" name="e6">11.6)</a>  ba'e mi viska la djordj.
+       I, no one else, saw George.
+
+<a id="e7" name="e7">11.7)</a>  mi ba'e viska la djordj.
+       I saw (not heard or smelled) George.
+</pre>
+<p>Emphasis on one of the structural components of a Lojban bridi can also be achieved by rearranging it into an order that is not the speaker’s or writer’s usual order. Any sumti moved out of place, or the selbri when moved out of place, is emphatic to some degree.</p>
+<p>For completeness, the cmavo “za'e” should be mentioned, also of selma'o BAhE. It marks a word as possibly irregular, non-standard, or nonce (created for the occasion):</p>
+<pre>
+<a id="e8" name="e8">11.8)</a>  mi klama la za'e. .albeinias
+       I go-to so-called Albania
+</pre>
+marks a Lojbanization of an English name, where a more appropriate standard form might be something like “la ctiipyris.”, reflecting the country’s name in Albanian.
+<p>Before a lujvo or fu'ivla, “za'e” indicates that the word has been made up on the spot and may be used in a sense that is not found in the unabridged dictionary (when we have an unabridged dictionary!).</p>
+<hr />
+
+<h3>12. Parenthesis and metalinguistic commentary: TO, TOI, SEI</h3>
+<p>The following cmavo are discussed in this section:</p>
+<pre>
+     to      TO      open parenthesis
+     to'i    TO      open editorial parenthesis
+
+     toi     TOI     close parenthesis
+
+     sei     SEI     metalinguistic bridi marker
+</pre>
+<p>The cmavo “to” and “toi” are discursive (non-mathematical) parentheses, for inserting parenthetical remarks. Any text whatsoever can go within the parentheses, and it is completely invisible to its context. It can, however, refer to the context by the use of pro-sumti and pro-bridi: any that have been assigned in the context are still assigned in the parenthetical remarks, but the reverse is not true.</p>
+<pre>
+<a id="e1" name="e1">12.1)</a>  doi lisas. mi djica le nu to doi frank. ko sisti toi do viska le mlatu
+       O Lisa, I desire the event-of (O Frank, [imperative] stop!) you see the cat.
+       Lisa, I want you to (Frank! Stop!) see the cat.
+</pre>
+<a href="../12/#e1">Example 12.1</a> implicitly redefines “do” within the parentheses: the listener is changed by “doi frank.” When the context sentence resumes, however, the old listener, Lisa, is automatically restored.
+<p>There is another cmavo of selma'o TO: “to'i”. The difference between “to” and “to'i” is the difference between parentheses and square brackets in English prose. Remarks within “to ... toi” cmavo are implicitly by the same speaker, whereas remarks within “to'i ... toi” are implicitly by someone else, perhaps an editor:</p>
+<pre>
+<a id="e2" name="e2">12.2)</a>  la frank. cusku lu mi prami do to'isa'a do du la djein. toi li'u
+       Frank expresses “I love you [you = Jane]”
+</pre>
+<p>The “sa'a” suffix is a discursive cmavo (of selma'o UI) meaning “editorial insertion”, and indicating that the marked word or construct (in this case, the entire bracketed remark) is not part of the quotation. It is required whenever the “to'i ... toi” remark is physically within quotation marks, at least when speaking to literal-minded listeners; the convention may be relaxed if no actual confusion results.</p>
+<p>Note: The parser believes that parentheses are attached to the previous word or construct, because it treats them as syntactic equivalents of subscripts and other such so-called “free modifiers”. Semantically, however, parenthetical remarks are not necessarily attached either to what precedes them or what follows them.</p>
+<p>The cmavo “sei” (of selma'o SEI) begins an embedded discursive bridi. Comments added with “sei” are called “metalinguistic”, because they are comments about the discourse itself rather than about the subject matter of the discourse. This sense of the term “metalinguistic” is used throughout this chapter, and is not to be confused with the sense “language for expressing other languages”.</p>
+<p>When marked with “sei”, a metalinguistic utterance can be embedded in another utterance as a discursive. In this way, discursives which do not have cmavo assigned in selma'o UI can be expressed:</p>
+<pre>
+<a id="e3" name="e3">12.3)</a>  la frank. prami sei la frank. gleki la djein.
+       Frank loves (Frank is happy) Jane.
+</pre>
+Using the happiness attitudinal, “.ui”, would imply that the speaker was happy. Instead, the speaker attributes happiness to Frank. It would probably be safe to elide the one who is happy, and say:
+<pre>
+<a id="e4" name="e4">12.4)</a>  la frank. prami sei gleki la djein.
+       Frank loves (he is happy) Jane.
+</pre>
+The grammar of the bridi following “sei” has an unusual limitation: the sumti must either precede the selbri, or must be glued into the selbri with “be” and “bei”:
+<pre>
+<a id="e5" name="e5">12.5)</a>  la frank. prami sei gleki be fa la suzn. la djein.
+       Frank loves (Susan is happy) Jane.
+</pre>
+This restriction allows the terminator cmavo “se'u” to almost always be elided.
+<p>Since a discursive utterance is working at a “higher” level of abstraction than a non-discursive utterance, a non-discursive utterance cannot refer to a discursive utterance. Specifically, the various back-counting, reciprocal, and reflexive constructs in selma'o KOhA ignore the utterances at “higher” metalinguistic levels in determining their referent. It is possible, and sometimes necessary, to refer to lower metalinguistic levels. For example, the English “he said” in a conversation is metalinguistic. For this purpose, quotations are considered to be at a lower metalinguistic level than the surrounding context (a quoted text cannot refer to the statements of the one who quotes it), whereas parenthetical remarks are considered to be at a higher level than the context.</p>
+<p>Lojban works differently from English in that the “he said” can be marked instead of the quotation. In Lojban, you can say:</p>
+<pre>
+<a id="e6" name="e6">12.6)</a>  la djan. cusku lu mi klama le zarci li'u
+       John expresses “I go to-the store”.
+</pre>
+which literally claims that John uttered the quoted text. If the central claim is that John made the utterance, as is likely in conversation, this style is the most sensible. However, in written text which quotes a conversation, you don’t want the “he said” or “she said” to be considered part of the conversation. If unmarked, it could mess up the anaphora counting. Instead, you can use:
+<pre>
+<a id="e7" name="e7">12.7)</a>  lu mi klama le zarci seisa'a la djan. cusku be dei li'u
+       “I go to-the store (John expresses this-sentence)”
+       “I go to the store”, said John.
+</pre>
+And of course other orders are possible:
+<pre>
+<a id="e8" name="e8">12.8)</a>  lu seisa'a la djan. cusku be dei mi klama le zarci
+       John said, “I go to the store”.
+
+<a id="e9" name="e9">12.9)</a>  lu mi klama seisa'a la djan cusku le zarci
+       “I go”, John said, “to the store”.
+</pre>
+Note the “sa'a” following each “sei”, marking the “sei” and its attached bridi as an editorial insert, not part of the quotation. In a more relaxed style, these “sa'a” cmavo would probably be dropped.
+<p>The elidable terminator for “sei” is “se'u” (of selma'o SEhU); it is rarely needed, except to separate a selbri within the “sei” comment from an immediately following selbri (or component) outside the comment.</p>
+<hr />
+
+
+<h3>13. Erasure: SI, SA, SU</h3>
+<p>The following cmavo are discussed in this section:</p>
+<pre>
+     si      SI      erase word
+     sa      SA      erase phrase
+     su      SU      erase discourse
+</pre>
+<p>The cmavo “si” (of selma'o SI) is a metalinguistic operator that erases the preceding word, as if it had never been spoken:</p>
+<pre>
+<a id="e1" name="e1">13.1)</a>  ti gerku si mlatu
+       This is-a-dog, er, is-a-cat.
+</pre>
+means the same thing as “ti mlatu”. Multiple “si” cmavo in succession erase the appropriate number of words:
+<pre>
+<a id="e2" name="e2">13.2)</a>  ta blanu zdani si si xekri zdani
+       That is-a-blue house, er, er, is-a-black house.
+</pre>
+In order to erase the word “zo”, it is necessary to use three “si” cmavo in a row:
+<pre>
+<a id="e3" name="e3">13.3)</a>  zo .bab. se cmene zo si si si la bab.
+       The-word “Bob” is-the-name-of the word “si”, er, er, Bob.
+</pre>
+The first use of “si” does not erase anything, but completes the “zo” quotation. Two more “si” cmavo are then necessary to erase the first “si” and the “zo”.
+<p>Incorrect names can likewise cause trouble with “si”:</p>
+<pre>
+<a id="e4" name="e4">13.4)</a>  mi tavla fo la .esperanto si si .esperanton.
+       I talk in-language that-named “and” “speranto”, er, er, Esperanto.
+</pre>
+The Lojbanized spelling “.esperanto” breaks up, as a consequence of the Lojban morphology rules (see <a href="../../4/1/">Chapter 4</a>) into two Lojban words, the cmavo “.e” and the undefined fu'ivla “speranto”. Therefore, two “si” cmavo are needed to erase them. Of course, “.e speranto” is not grammatical after “la”, but recognition of “si” is done before grammatical analysis.
+<p>Even more messy is the result of an incorrect “zoi”:</p>
+<pre>
+<a id="e5" name="e5">13.5)</a>  mi cusku zoi fy. gy. .fy.  si si si si zo .djan
+       I express [foreign] [quote] “gy” [unquote], er, er, er, er, “John”.
+</pre>
+In <a href="../13/#e5">Example 13.5</a>, the first “fy” is taken to be the delimiting word. The next word must be different from the delimiting word, and “gy.”, the Lojban name for the letter “g”, was chosen arbitrarily. Then the delimiting word must be repeated. For purposes of “si” erasure, the entire quoted text is taken to be a word, so four words have been uttered, and four more “si” cmavo are needed to erase them altogether. Similarly, a stray “lo'u” quotation mark must be erased with “fy. le'u si si si”, by completing the quotation and then erasing it all with three “si” cmavo.
+<p>What if less than the entire “zo” or “zoi” construct is erased? The result is something which has a loose “zo” or “zoi” in it, without its expected sequels, and which is incurably ungrammatical. Thus, to erase just the word quoted by “zo”, it turns out to be necessary to erase the “zo” as well:</p>
+<pre>
+<a id="e6" name="e6">13.6)</a>  mi se cmene zo .djan.  si si zo .djordj.
+       I am-named-by the-word “John”, er, er, the-word “George”.
+</pre>
+The parser will reject “zo .djan. si .djordj.”, because in that context “djordj.” is a name (of selma'o CMENE) rather than a quoted word.
+<p>Note: The current machine parser does not implement “si” erasure.</p>
+<p>As the above examples plainly show, precise erasures with “si” can be extremely hard to get right. Therefore, the cmavo “sa” (of selma'o SA) is provided for erasing more than one word. The cmavo following “sa” should be the starting marker of some grammatical construct. The effect of the “sa” is to erase back to and including the last starting marker of the same kind. For example:</p>
+<pre>
+<a id="e7" name="e7">13.7)</a>  mi viska le sa .i mi cusku zo .djan.
+       I see the  ...  I say the-word “John”.
+</pre>
+Since the word following “sa” is “.i”, the sentence separator, its effect is to erase the preceding sentence. So <a href="../13/#e7">Example 13.7</a> is equivalent to:
+<pre>
+<a id="e8" name="e8">13.8)</a>  mi cusku zo .djan.
+</pre>
+Another example, erasing a partial description rather than a partial sentence:
+<pre>
+<a id="e9" name="e9">13.9)</a>  mi viska le blanu zdan. sa le xekri zdani
+       I see the blue hou ...  the black house.
+</pre>
+In <a href="../13/#e9">Example 13.9</a>, “le blanu zdan.” is ungrammatical, but clearly reflects the speaker’s original intention to say “le blanu zdani”. However, the “zdani” was cut off before the end and changed into a name. The entire ungrammatical “le” construct is erased and replaced by “le xekri zdani”.
+<p>Note: The current machine parser does not implement “sa” erasure. Getting “sa” right is even more difficult (for a computer) than getting “si” right, as the behavior of “si” is defined in terms of words rather than in terms of grammatical constructs (possibly incorrect ones) and words are conceptually simpler entities. On the other hand, “sa” is generally easier for human beings, because the rules for using it correctly are less finicky.</p>
+<p>The cmavo “su” (of selma'o SU) is yet another metalinguistic operator that erases the entire text. However, if the text involves multiple speakers, then “su” will only erase the remarks made by the one who said it, unless that speaker has said nothing. Therefore “susu” is needed to eradicate a whole discussion in conversation.</p>
+<p>Note: The current machine parser does not implement either “su” or “susu” erasure.</p>
+<hr />
+
+<h3>14. Hesitation: Y</h3>
+<p>The following cmavo is discussed in this section:</p>
+<pre>
+     .y.     Y       hesitation noise
+</pre>
+<p>Speakers often need to hesitate to think of what to say next or for some extra-linguistic reason. There are two ways to hesitate in Lojban: to pause between words (that is, to say nothing) or to use the cmavo “.y.” (of selma'o Y). This resembles in sound the English hesitation noise written “uh” (or “er”), but differs from it in the requirement for pauses before and after. Unlike a long pause, it cannot be mistaken for having nothing more to say: it holds the floor for the speaker. Since vowel length is not significant in Lojban, the “y” sound can be dragged out for as long as necessary. Furthermore, the sound can be repeated, provided the required pauses are respected.</p>
+<p>Since the hesitation sound in English is outside the formal language, English-speakers may question the need for a formal cmavo. Speakers of other languages, however, often hesitate by saying (or, if necessary, repeating) a word (“este” in some dialects of Spanish, roughly meaning “that is”), and Lojban’s audio-visual isomorphism requires a written representation of all meaningful spoken behavior. Of course, “.y.” has no grammatical significance: it can appear anywhere at all in a Lojban sentence except in the middle of a word.</p>
+<hr />
+
+<h3>15. No more to say: FAhO</h3>
+<p>The following cmavo is discussed in this section:</p>
+<pre>
+     fa'o    FAhO    end of text
+</pre>
+<p>The cmavo “fa'o” (of selma'o FAhO) is the usually omitted marker for the end of a text; it can be used in computer interaction to indicate the end of input or output, or for explicitly giving up the floor during a discussion. It is outside the regular grammar, and the machine parser takes it as an unconditional signal to stop parsing unless it is quoted with “zo” or with “lo'u ... le'u”. In particular, it is not used at the end of subordinate texts quoted with “lu ... li'u” or parenthesized with “to ... toi”.</p>
+<hr />
+
+<h3>16. List of cmavo interactions</h3>
+<p>The following list gives the cmavo and selma'o that are recognized by the earliest stages of the parser, and specifies exactly which of them interact with which others. All of the cmavo are at least mentioned in this chapter. The cmavo are written in lower case, and the selma'o in UPPER CASE.</p>
+<ul>
+<li>“zo” quotes the following word, no matter what it is.</li>
+<li>“si” erases the preceding word unless it is a “zo”.</li>
+<li>“sa” erases the preceding word and other words, unless the preceding word is a “zo”.</li>
+<li>“su” is the same as “sa”, but erases more words.</li>
+<li>“lo'u” quotes all following words up to a “le'u” (but not a “zo le'u”).</li>
+<li>“le'u” is ungrammatical except at the end of a “lo'u quotation.</li>
+<li>ZOI cmavo use the following word as a delimiting word, no matter what it is, but using “le'u” may create difficulties.</li>
+<li>“zei” combines the preceding and the following word into a lujvo, but does not affect “zo”, “si”, “sa”, “su”, “lo'u”, ZOI cmavo, “fa'o”, and “zei”.</li>
+<li>BAhE cmavo mark the following word, unless it is “si”, “sa”, or “su”, or unless it is preceded by “zo”. Multiple BAhE cmavo may be used in succession.</li>
+<li>“bu” makes the preceding word into a lerfu word, except for “zo”, “si”, “sa”, “su”, “lo'u”, ZOI cmavo, “fa'o”, “zei”, BAhE cmavo, and “bu”. Multiple “bu” cmavo may be used in succession.</li>
+<li>UI and CAI cmavo mark the previous word, except for “zo”, “si”, “sa”, “su”, “lo'u”, ZOI, “fa'o”, “zei”, BAhE cmavo, and “bu”. Multiple UI cmavo may be used in succession. A following “nai” is made part of the UI.</li>
+<li>“.y.”, “da'o”, “fu'e”, and “fu'o” are the same as UI, but do not absorb a following “nai”.</li>
+</ul>
+<hr />
+
+<h3>17. List of Elidable Terminators</h3>
+<p>The following list shows all the elidable terminators of Lojban. The first column is the terminator, the second column is the selma'o that starts the corresponding construction, and the third column states what kinds of grammatical constructs are terminated. Each terminator is the only cmavo of its selma'o, which naturally has the same name as the cmavo.</p>
+<pre>
+     be'o    BE              sumti attached to a tanru unit
+     boi     PA/BY           number or lerfu string
+     do'u    COI/DOI         vocative phrases
+     fe'u    FIhO            ad-hoc modal tags
+     ge'u    GOI             relative phrases
+     kei     NU              abstraction bridi
+     ke'e    KE              groups of various kinds
+     ku      LE/LA           description sumti
+     ku'e    PEhO            forethought mekso
+     ku'o    NOI             relative clauses
+     li'u    LU              quotations
+     lo'o    LI              number sumti
+     lu'u    LAhE/NAhE+BO    sumti qualifiers
+     me'u    ME              tanru units formed from sumti
+     nu'u    NUhI            forethought termsets
+     se'u    SEI/SOI         metalinguistic insertions
+     te'u    various         mekso conversion constructs
+     toi     TO              parenthetical remarks
+     tu'u    TUhE            multiple sentences or paragraphs
+     vau     (none)          simple bridi or bridi-tails
+     ve'o    VEI             mekso parentheses
+</pre>
+<hr />
+
 
 
 <div class="nav">
