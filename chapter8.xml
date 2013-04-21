@@ -51,6 +51,8 @@
 -->どちらかに統一しよう。前者のほうがすっきりしていて良いように思う</note>
 <note># note: note that ... を「... に注意しよう」と訳すか、<!--
 -->「... に気をつけよう」と訳すか</note>
+<note># note: 「関係句」と「関係節」の訳しわけについて。<!--
+-->とくに節のタイトルについて</note>
 </prenotes>
 
 <!-- section#1 -->
@@ -2968,8 +2970,8 @@ in written English, one or both sentences would need rewriting.
 <paragraph>
 詳しくは<ln><name>第6章</name><address>./chapter6.html</address></ln>で<!--
 -->説明するが、<!--
--->呼応句は文や談話が誰に対して話されているか、<!--
--->誰を&listener;とするかを決めるために使われる。<!--
+-->呼応句によって文や談話が誰に対して話されているか、<!--
+-->誰を&listener;とするかを示すことができる。<!--
 -->おおまかにわけて3つの形があるが、どれも&selma_o; COI または DOI <!--
 -->(これらは&vocative_word;と呼ばれ、ひとつでも複数でもいい)で始まり、<!--
 -->名前、&selbri;、または&sumti;が続く。以下に3つの例文を挙げる。
@@ -2985,6 +2987,23 @@ followed by either a name, a selbri, or a sumti.
 Here are three examples:
 </en>
 </paragraph>
+
+<note># note: sentence or discourse を「文や談話」と訳したが、<!--
+-->or discourse と言っている理由は .i で区切られる sentence よりも広い範囲に<!--
+-->ついての話をするためと思われる。「文や話が」と訳すべきか。<!--
+-->あるいは単に「話が」としても良いとは思うが</note>
+<note># note: 上記は違うかもしれない。<!--
+-->書いた文について sentence と言い話された話について discourse と言っている<!--
+-->のかもしれない。また、それに対応して以下の addressed to と listner とで分けて<!--
+-->いるのだろう。</note>
+<note># note: とすると、日本語の「話」は書いたものについても話されたものについても<!--
+-->使えるので、単に「話」としてしまってもいい気もするし、<!--
+-->または「文」も話された言葉についても使えるので単に<!--
+-->「文」としてもいいかもしれない。</note>
+<note># note: of indicating who a sentence or discourse is addressed to と<!--
+-->of identifying the intended listener
+</note>
+<note># </note>
 
 <example><ex_no>9.1</ex_no>
 <lojban>coi. frank.</lojban>

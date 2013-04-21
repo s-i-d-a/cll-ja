@@ -237,3 +237,4 @@ utterance	発話
 utterance ordinal	発話順序
 vague  漠然とした
 vocative phrase	呼応句	# 提案
+vocative word	呼応語	# 提案
