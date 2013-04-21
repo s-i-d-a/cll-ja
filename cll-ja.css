@@ -51,7 +51,7 @@ div.nav-title-link { font-style:italic; font-size:small; }
 div.nav-section-name { font-style:italic; }
 div.nav-section-link-next{ text-align:right; }
 
-.notci { background-color:#ffeeee; }
+.notci { background-color:#ffeeee; margin:0.5em}
 /*TOC*/
 #toc .chapter .chtitle {
   font-weight:bold;
