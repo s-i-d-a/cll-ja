@@ -115,7 +115,16 @@ BE は LE による描写のなかで最も&useful;。BEI や BEhO &see;。
 <japanese>私はあそこに行こうとする。</japanese>
 </example>
 <note>
-# 訳注: klama の x1 が troci を修飾し、その次の場所である x2 に ta がはいる
+# 訳注: <!-- klama の x1 が troci を修飾し、その次の場所である x2 に ta がはいる -->
+klama be ta (klama の x2 に ta がはいる) が troci にかかり「『あそこに行く』的に試みる」となる。<!--
+-->タンルなので、「あそこに行く」ことと「試みる」のあいだの修飾関係には<!--
+-->曖昧性がある。たとえば「あそこに行く」ことを「試み」の目的とする上記の訳以外に<!--
+-->、「あそこに行く」ことを「試み」の内容とする<!--
+-->「あそこに行ってみた(I try going to that place)」<!--
+-->という解釈も可能となる。<!--
+-->その 2 つを訳しわけるならば、
+mi troci lonu (mi) klama ta (私はあそこに行こうとする)と
+mi troci fi lonu (mi) klama ta (私はあそこに行ってみた)となるだろう。
 </note>
 
 <en>
@@ -136,8 +145,11 @@ BE によって&tanru_unit;&attach_to1;複数の&sumti;同士を&separate;。
 <japanese>私は家から店に行こうとする。</japanese>
 </example>
 <note>
-# 訳注: klama の x1 が troci を修飾し、その次の場所である x2 に le zarci が
-さらにその次の場所である x3 に bei で分けられた le zdani がはいる
+# 訳注: <!-- klama の x1 が troci を修飾し、その次の場所である x2 に le zarci が
+さらにその次の場所である x3 に bei で分けられた le zdani がはいる -->
+klama be le zarci bei le zdani be'o では、x2 に le zarci
+がはいり、x3 に le zdani がはいり、それが troci
+にかかり、「『家から店に行く』的に試みる」となる。
 </note>
 
 <en>
@@ -178,6 +190,7 @@ I am-a-(goer to-the market) type-of-trier. I try to go to the market.
 </example>
 <note>
 # 訳注: 原著では pi'i ではなく pi'u となっていたが pi'i が正しいと思われる
+&lt;- wiki では直っているようだ
 </note>
 <note>
 # 訳注: bi'e によって pi'i(かけ算) のほうが先に計算されることが明示されている
@@ -227,6 +240,13 @@ I am standing between Dresden and Frankfurt.
 # 訳注: ta cmalu (nixli bo ckule) のように結合する。
 bo がなければ、ta (cmalu nixli) ckule のように左から結合し、<!--
 -->「(小さな女の子)のための学校」となる。
+</note>
+<note>
+# 訳注: 新文法(提案されている文法?)では bo も左結合となる。
+bo で右結合となるのが便利な場面も考えられるが、<!--
+-->構文解析を複雑にするほどの利益はないということか。<!--
+-->いずれにしても複雑な結合性を表す場合には明示的な「かっこ([cmavo 調べ中])」を使えば<!--
+-->よいと思う
 </note>
 
 <en>
@@ -286,7 +306,7 @@ In paticular, attached to single-vowel cmavo to make words for vowel letters.
 <section>
 <title>&selma_o; BY</title><reference path="./chapter17.html">第17章</reference>
 <description>
-&lojban;における&alphabet;の&letter;&represent;す&word;と<!--
+&lojban;における&alphabet;の&letter;&represent;す&word;および<!--
 -->&letter_word;の&interpretation;を変えるための&shift_word;。
 </description>
 <example>
@@ -294,7 +314,9 @@ In paticular, attached to single-vowel cmavo to make words for vowel letters.
 <japanese>A は B に IBM のコンピュータについて話す。</japanese></example>
 <note># 訳注: IBM をロジバンの名前にするためにはそれぞれの文字 ibu by my
 をつなげて、最後に子音をつけて、.ibubymym. とする。母音の後の bu を省略して
-.ibymym. とできる。</note>
+.ibymym. とできる。ただし、これは規則というよりは提案と考えられる。<!--
+-->いずれにしても cmene は自由に作れる</note>
+<note># 訳注: シフト記号の役割とは「それ以降を大文字とする」等</note>
 
 <en>
 Words representing the letters of the Lojban alphabet, plus various
@@ -313,6 +335,9 @@ A talks to B about IBM computers.
 <example><lojban>.ei cai mi klama le zarci</lojban>
 <japanese>店に行かなければならない。</japanese></example>
 <note># 訳注: .ei は義務を表す心態詞。eicai は強い義務を表現する。</note>
+<note># 訳注: particle を「小辞」と訳した</note>
+<note># 訳注: 「提案されている文法」では CAI は UI に統合されるようだが、
+おそらくこれは構文解析の簡略化のためであり、意味論的には変化は無いと思われる</note>
 
 <en>
 A particle which indicates the intensity of an emotion: maximum,
@@ -350,6 +375,15 @@ All ducks have the capability of swimming by floating.
 .i le crino broda cu barda .i le xunre broda cu cmalu</lojban>
 <japanese>これはプラスティックのキャットフード缶の蓋だ。
 緑のは大きい。赤いのは小さい。</japanese></example>
+<note>
+# 訳注: ((slasi je (mlatu bo cidja)) lante) gacri となると思う。<!--
+-->結合が bo > je > 無し かつ左結合なので。つまりプラスチックと猫の餌が缶にかかり、<!--
+-->それ全体が蓋にかかる。<!--
+-->よって slasi が「プラスチック製」を意味していたとしても蓋ではなく、<!--
+-->缶がプラスチック製であることを意味している。<!--
+-->「蓋がプラスチック製」であると言いたければ、
+slasi je mlatu bo cidja lante bo gacri となるだろう
+</note>
 
 <en>
 Assigns a selbri definition to one of the five pro-bridi gismu:
