@@ -800,33 +800,37 @@
 
 <a href="#e13.5">例13.5</a> では、最初の “fy” は区切り語として認識される。次の語は区切り語とは違うものなら何でも良いので、とりあえず文字 “g” のロジバン名である “gy.”を任意に選んだ。次に、区切り語を繰り返す必要がある。“si”で消すために、引用されたテキスト全体が１語として扱われるので、4個の“si”がそれらを完全に消すのに必要になる。同様に、引用開始記号 “lo'u” を間違って発話してしまった場合、“fy. le'u si si si”を使い、引用を完成してから、それらを3個の“si”シマヴォで消す必要がある。
 
-<p>“zo” や “zoi” の構造全体が消されなかった場合はどうであろうか。結果としては、“zo” や “zoi” の続きに来る語がなく、宙ぶらりんになった状態
+<p>“zo” や “zoi” の構造全体が消されなかった場合はどうであろうか。結果としては、“zo” や “zoi” の続きに来る語がなく、宙ぶらりんになった状態となってしまい、これはどうしようも無く非文法的である。そのため、“zo”で引用した語を消すためだけに、“zo”そのものも消す必要があることになってしまう：</p>
 
-<p>What if less than the entire “zo” or “zoi” construct is erased? The result is something which has a loose “zo” or “zoi” in it, without its expected sequels, and which is incurably ungrammatical. Thus, to erase just the word quoted by “zo”, it turns out to be necessary to erase the “zo” as well:</p>
 <pre>
-<a id="e6" name="e6">13.6)</a>  mi se cmene zo .djan.  si si zo .djordj.
-       I am-named-by the-word “John”, er, er, the-word “George”.
+<a id="e6" name="e13.6">13.6)</a>  mi se cmene zo .djan.  si si zo .djordj.
+       私 ～という名前 語 “ジョン”、[消去]、[消去]、語 “ジョージ”。
 </pre>
-The parser will reject “zo .djan. si .djordj.”, because in that context “djordj.” is a name (of selma'o CMENE) rather than a quoted word.
-<p>Note: The current machine parser does not implement “si” erasure.</p>
-<p>As the above examples plainly show, precise erasures with “si” can be extremely hard to get right. Therefore, the cmavo “sa” (of selma'o SA) is provided for erasing more than one word. The cmavo following “sa” should be the starting marker of some grammatical construct. The effect of the “sa” is to erase back to and including the last starting marker of the same kind. For example:</p>
+
+“zo .djan. si .djordj.”は、構文解析に失敗する。この文脈では“djordj.” は引用された語ではなく名前 (セルマホ CMENE) だからである。
+<p>注意：現在の構文解析器は“si”の消去を実装していない（訳注：本書翻訳時点 2013年では、camxes など対応している構文解析器もある。）</p>
+
+<p>上の例が示すように、“si”を正確に用いて消去するのは非常に難しい。そのため、シマヴォ“sa” (セルマホ SA) が、２個以上の語を消去するために用意されている。“sa”の次にはシマヴォが続き、これがある文法的構造の開始マーカーを表す。“sa”の働きは、その開始マーカーが最後に出現したところまで（それを含めて）消去するというというものである。例えば：</p>
+
 <pre>
-<a id="e7" name="e7">13.7)</a>  mi viska le sa .i mi cusku zo .djan.
-       I see the  ...  I say the-word “John”.
+<a id="e7" name="e13.7">13.7)</a>  mi viska le sa .i mi cusku zo .djan.
+       私 見る その  ...  私 言う [引用] “ジョン”。
 </pre>
-Since the word following “sa” is “.i”, the sentence separator, its effect is to erase the preceding sentence. So <a href="../13/#e7">Example 13.7</a> is equivalent to:
+“sa” の次の語が文分割“.i”であるため、その効果は、前の文まで消去するというものである。そのため、<a href="#e13.7">例 13.7</a>は、以下と同等である：
 <pre>
-<a id="e8" name="e8">13.8)</a>  mi cusku zo .djan.
+<a id="e8" name="e13.8">13.8)</a>  mi cusku zo .djan.
 </pre>
-Another example, erasing a partial description rather than a partial sentence:
+他の例として、文ではなく記述の一部を消すこともできる：
 <pre>
-<a id="e9" name="e9">13.9)</a>  mi viska le blanu zdan. sa le xekri zdani
-       I see the blue hou ...  the black house.
+<a id="e9" name="e13.9">13.9)</a>  mi viska le blanu zdan. sa le xekri zdani
+       私 見る その 青い い ...  その 黒い 家。
 </pre>
-In <a href="../13/#e9">Example 13.9</a>, “le blanu zdan.” is ungrammatical, but clearly reflects the speaker’s original intention to say “le blanu zdani”. However, the “zdani” was cut off before the end and changed into a name. The entire ungrammatical “le” construct is erased and replaced by “le xekri zdani”.
-<p>Note: The current machine parser does not implement “sa” erasure. Getting “sa” right is even more difficult (for a computer) than getting “si” right, as the behavior of “si” is defined in terms of words rather than in terms of grammatical constructs (possibly incorrect ones) and words are conceptually simpler entities. On the other hand, “sa” is generally easier for human beings, because the rules for using it correctly are less finicky.</p>
-<p>The cmavo “su” (of selma'o SU) is yet another metalinguistic operator that erases the entire text. However, if the text involves multiple speakers, then “su” will only erase the remarks made by the one who said it, unless that speaker has said nothing. Therefore “susu” is needed to eradicate a whole discussion in conversation.</p>
-<p>Note: The current machine parser does not implement either “su” or “susu” erasure.</p>
+<a href="#e13.9">例13.9</a>の “le blanu zdan.”は非文法的であるが、話者の“le blanu zdani”という発話の意図を明らかに反映している。しかし、“zdani”は途中で切れ、名前になっている。この非文法的な“le”構造全体が消去され、“le xekri zdani”で上書きされる。
+<p>注意：現在の構文解析器は、“sa” を実装していない（訳注：同様に、2013年本書翻訳時点で、camxes など対応している構文解析器もある。）。コンピュータにとって“sa”をきちんと解析することは、（非文法的かもしれない）文法的構造ではなく、より単純な単位である単語単位で定義されている “si”よりもさらに難しい。一方、人間にとっては、きちんと使うためのルールが煩雑ではないので、一般的により使いやすい。</p>
+
+<p>シマヴォ “su” (セルマホ SU) は、もうひとつのメタ言語的演算子であり、全体のテキストを消去する。しかし、テキストに複数の話者が関わっている場合には、“su”は（その話者が何も言ってない場合を除いて）それを言った話者の発言のみを削除する。会話における議論全体を削除するには“susu”が必要になる。</p>
+
+<p>注意：現在の構文解析器は、“su” や “susu”による消去を実装していない。（訳注：同上）</p>
 <hr />
 
 <h3>14. Hesitation: Y</h3>
