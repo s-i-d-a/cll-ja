@@ -1,6 +1,12 @@
+lojban の現行文法の PEG に日本語解説を追加。
+文責: 重城良国
+
 ; This is a Parsing Expression Grammar for Lojban.
 ; See http://www.pdos.lcs.mit.edu/~baford/packrat/
 ; 
+
+0. PEG の記法とこのファイルでのルールの説明
+
 ; All rules have the form:
 ; 
 ; 	name <- peg-expression
@@ -19,6 +25,12 @@
 ; 8)  () serves to indicate the grouping of the other operators.
 ;
 ; Longest match wins.
+
+上記説明に足りないものとして !exp はその位置に
+exp が来ないことを示す。
+また ; ではじまる行はコメント。
+
+1. 文章、段落、記述 (文よりも大きなまとまり)
 
 ; --- GRAMMAR ---
 
@@ -39,6 +51,10 @@ text-part-2 <- (CMENE-clause+ / indicators?) free*
 intro-si-clause <- si-clause? SI-clause*
 faho-clause <- (FAhO-clause dot-star)?
 
+上記の text は text-1 に、文章全体にかかる NAI や UI 、名前等をつけて、
+最後に fa'o をつけたもの。
+intro-null は空白や sa, si を扱うだけ。
+
 ; Please note that the "text-1" item in the text-1 production does
 ; *not* match the BNF. This is due to a bug in the BNF.  The change
 ; here was made to match grammar.300
@@ -47,13 +63,27 @@ text-1 <-
 	NIhO-clause+ free* su-clause* paragraphs? /
 	paragraphs
 
+文章の頭に .i や ni'o を置いても良いし
+置かなくても良いということを示している。
+
 paragraphs <- paragraph (NIhO-clause+ free* su-clause* paragraphs)?
+
+段落は ni'o で区切られた paragraph の集まりである。
+また su は ni'o の後までを消す。
 
 paragraph <-
 	(statement / fragment)
 	(I-clause !jek !joik !joik-jek free* (statement / fragment)?)*
 
+段落は記述(または断片)を .i でつないだもの。
+.i に jek や joik がついたものはより強く結合するということで、
+より下で扱うためここでは !jek !joik 等となっている。
+
 statement <- statement-1 / prenex statement
+
+記述には prenex がいくつでもつけられる。
+以下、bo の存在による結合性の強さを区別するために
+何段階かに分かれている。
 
 statement-1 <- statement-2 (I-clause joik-jek statement-2?)*
 
@@ -72,6 +102,8 @@ fragment <-
 prenex <- terms ZOhU-clause free*
 
 ;; sentence <- (terms CU-clause? free*)? bridi-tail / bridi-tail
+
+2. 文やブリディ
 
 ;-------------------------------------------------------------------
 ;-- #02 sentence bridi
