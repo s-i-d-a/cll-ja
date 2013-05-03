@@ -1,5 +1,7 @@
 lojban の現行文法の PEG に日本語解説を追加。
 文責: 重城良国
+注: 見直す時間が無いのでまちがい等多々あると思いますが、
+その都度直していこうかと思います。
 
 ; This is a Parsing Expression Grammar for Lojban.
 ; See http://www.pdos.lcs.mit.edu/~baford/packrat/
@@ -65,11 +67,13 @@ text-1 <-
 
 文章の頭に .i や ni'o を置いても良いし
 置かなくても良いということを示している。
+さらに言えば、.i や ni'o のみでも文章として成立することも読み取れる。
 
 paragraphs <- paragraph (NIhO-clause+ free* su-clause* paragraphs)?
 
 段落は ni'o で区切られた paragraph の集まりである。
 また su は ni'o の後までを消す。
+詳細は su-clause の説明で。
 
 paragraph <-
 	(statement / fragment)
@@ -87,19 +91,34 @@ statement <- statement-1 / prenex statement
 
 statement-1 <- statement-2 (I-clause joik-jek statement-2?)*
 
+本質的には上記と同様、文を .i でつなげるということを言っているが、
+ただの .i よりも joik-jek のついた .i のほうが結合力が強いということを
+示している。
+
 statement-2 <-
 	statement-3 (I-clause (jek / joik)? stag? BO-clause free* statement-2)? /
 	statement-3 (I-clause (jek / joik)? stag? BO-clause free*)?
+
+bo がついた場合には .i や .ije 等よりも強く結びつくことを示している。
+bo 同士では右結合となることも示している。
+また、2行目では、.i bo .i bo のような構造も可能であることを示している。
 
 statement-3 <-
 	sentence /
 	tag? TUhE-clause free* text-1 TUhU-clause? free*
 
+上記で .i 等で結びつけられる構造は、文または tu'e ... tu'u で
+かこまれた文章である。
+
 fragment <-
 	prenex / terms VAU-clause? free* / ek free* / gihek free* / quantifier /
 	NA-clause !JA-clause free* / relative-clauses / links / linkargs
 
+上記の「記述」の代わりに置くことのできる「断片」。
+
 prenex <- terms ZOhU-clause free*
+
+複数の項のあとに zo'u を置いたものが prenex である。
 
 ;; sentence <- (terms CU-clause? free*)? bridi-tail / bridi-tail
 
