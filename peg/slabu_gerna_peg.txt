@@ -3,6 +3,38 @@ lojban の現行文法の PEG に日本語解説を追加。
 注: 見直す時間が無いのでまちがい等多々あると思いますが、
 その都度直していこうかと思います。
 
+a. 全体の構造
+
+0. PEG の記法とこのファイルでのルールの説明
+1. 文章、段落、記述 (文よりも大きなまとまり)
+2. 文やブリディ
+3. 項、スムティ
+4. 関係節、関係句
+5. セルブリ、タンル単位
+6. 付加引数 (be ... bei ... be'o)
+7. 数式
+8. 接続句
+9. 時制、法制タグ
+10. 自由修飾句
+11. マジックワード (zei による複合単語や bu による文字を表す単語)
+12. BAhE や UI 等の単語の前後にくっつけるもの
+13. 空白として扱われる構造
+14. それぞれのセルマホに属する単語の前後に BAhE や UI をつけたもの
+15. 単語の形態に関するもの(cmene は子音で終わる、とか
+	brivla は二重子音を含むとか、許される二重子音は何かとか)
+
+b. 全体の構成についてのコメント
+
+14 はそれぞれのセルマホに BAhE や UI 等をつけた構造を定義している。
+ほぼすべてのセルマホについて定義されているので、
+このファイルのほとんど半分を占める。
+15 は母音や子音の話等の単語の構造に関する話である。
+cmavo の列挙部分がその半分を占める。
+また、それ自身は全体の1/4ほどを占める。
+
+さらに、多くの行が sa による打ち消しを実現するために使われている。
+よって実質的に重要なのは全体の 1/3 ほどであると思われる。
+
 ; This is a Parsing Expression Grammar for Lojban.
 ; See http://www.pdos.lcs.mit.edu/~baford/packrat/
 ; 
@@ -28,8 +60,8 @@ lojban の現行文法の PEG に日本語解説を追加。
 ;
 ; Longest match wins.
 
-上記説明に足りないものとして !exp はその位置に
-exp が来ないことを示す。
+上記説明に足りないものとして !exp はその位置に exp が来ないことを、
+&exp はその位置に exp が来ることを示す。
 また ; ではじまる行はコメント。
 
 1. 文章、段落、記述 (文よりも大きなまとまり)
@@ -129,18 +161,52 @@ prenex <- terms ZOhU-clause free*
 
 sentence <- (terms bridi-tail-sa* CU-clause? free*)? bridi-tail-sa* bridi-tail
 
+bridi-tail-sa は消された bridi-tail であり、
+それ(ら)の代わりに本当の bridi-tail が来る。
+複数の項の後に cu が来てそのあとに bridi-tail が来るという構造。
+bridi-tail の前に項が来ない場合には cu をつけてはならない
+ということも示されている。
+
 sentence-sa <-
 	sentence-start
 	(!sentence-start (sa-word / SA-clause !sentence-start ) )*
 	SA-clause
 	&text-1
 
+文というレベルでの sa による打ち消し。
+SA-clause は sa の前後に BAhE や UI 等がついたもの。
+[selma'o]-clause という形の多くはそのような構造を表している。
+また、sa-word はいくつかの特殊な構造を除いたほとんどの単語。
+
+つまり文レベルでの sa による打ち消しは、
+文の開始に普通の単語または文の開始の前に来ない sa がいくつか来て、
+そのあとに sa が来て、その先に文章が続くという形をとるということ。
+
 sentence-start <- I-pre / NIhO-pre
+
+...-start という形は sa による打ち消しのためだけに使われる。
+ほとんどの構造にこれら sa のための文法構造が必要。
+zasni gerna で sa を廃止することにしたのは、
+このような本質的でない部分が、
+文法を複雑にするのを避けるためもあるだろう。
+また、何が文法的に同等であると考えるのかという点にも恣意性がある。
 
 subsentence <- sentence / prenex subsentence
 
+subsentence は noi や nu によって作られる構造内で使われる
+文の特殊な形。
+sentence との違いは(複数の) prenex がつけられるという点である。
+(単文しかとれないが prenex はとれるような場所において使われる)
+
 bridi-tail <- bridi-tail-1
 	(gihek stag? KE-clause free* bridi-tail KEhE-clause? free* tail-terms)?
+
+この bridi-tail と bridi-tail-1, bridi-tail-2 とは
+ke による結合性の低下、そのまま、bo による結合性の強化の三者で、
+それぞれのレベルで gi'e を足している。
+また、gi'e によって結合された bridi-tail はそれぞれの
+tail-terms とは別に共通の tail-terms を持てるということもここで
+示されている。
 
 bridi-tail-sa <-
 	bridi-tail-start
@@ -148,29 +214,58 @@ bridi-tail-sa <-
 	SA-clause
 	&bridi-tail
 
+bridi-tail レベルの sa による打ち消し。今回は詳述しない。
+
 bridi-tail-start <-
 	ME-clause / NUhA-clause / NU-clause / NA-clause !KU-clause /
 	NAhE-clause !BO-clause / selbri / tag bridi-tail-start /
 	KE-clause bridi-tail-start / bridi-tail
 
+sa による打ち消しのために必要な構造。今回は詳述しない。
+
 bridi-tail-1 <- bridi-tail-2
 	(gihek !(stag? BO-clause) !(stag? KE-clause) free* bridi-tail-2 tail-terms)*
 
+上記の構造と同様だが bo も ke もついていない。結合性は中くらい。
+
 bridi-tail-2 <- bridi-tail-3 (gihek stag? BO-clause free* bridi-tail-2 tail-terms)?
 
+上記の構造と同様だが bo がついている。強い結合性を持つ。
+bo は現行文法では右結合なので、ここも右結合となるようになっている。
+
+(注)
+基本的に a <- b (op c)* は左結合を、a <- b (op a)? は右結合を示す。
+ちなみに、左結合は本来ならば a <- a (op b)? とするべきだが、
+PEG では左再帰を扱えない(無限ループになる)ために * による
+くりかえしを使っている。
+
 bridi-tail-3 <- selbri tail-terms / gek-sentence
+
+bridi-tail の基本形は selbri + tail-terms である。
+つまり、klama tu ti ta lo karce など。
 
 gek-sentence <-
 	gek subsentence gik subsentence tail-terms /
 	tag? KE-clause free* gek-sentence KEhE-clause? free* /
 	NA-clause free* gek-sentence
 
+gek-sentence も bridi-tail となる。
+これは、[ge 文 gi 文] という構造。これも共通の tail-terms を取れる。
+また、これを ke ... ke'e でくくったり、これに na をつけたりすることも
+できる。
+
+3. 項、スムティ
+
 ;-------------------------------------------------------------------
 ;-- #03 term sumti
+
+3-1. 項
 
 tail-terms <- terms? VAU-clause? free*
 
 terms <- terms-1+
+
+tail-terms は
 
 ;; terms-1 <- terms-2 (PEhE-clause free* joik-jek terms-2)*
 
@@ -210,6 +305,8 @@ gek-termset <- gek terms-gik-terms
 
 terms-gik-terms <- term (gik / terms-gik-terms) term
 
+3-2. スムティ
+
 sumti <- sumti-1 (VUhO-clause free* relative-clauses)?
 
 sumti-1 <- sumti-2 (joik-ek stag? KE-clause free* sumti KEhE-clause? free*)?
@@ -248,6 +345,8 @@ sumti-tail-1 <-
 	quantifier selbri relative-clauses? /
 	quantifier sumti
 
+4. 関係節、関係句
+
 ;-------------------------------------------------------------------
 ;-- #04 relative clauses
 
@@ -271,8 +370,12 @@ relative-clause-1 <-
 
 relative-clause-start <- GOI-clause / NOI-clause
 
+5. セルブリ、タンル単位
+
 ;-------------------------------------------------------------------
 ;-- #05 selbri
+
+5-1. セルブリ
 
 selbri <- tag? selbri-1
 
@@ -293,6 +396,8 @@ selbri-6 <-
 	tanru-unit (BO-clause free* selbri-6)? /
 	NAhE-clause? free* guhek selbri gik selbri-6
 
+5-2. タンル単位
+
 tanru-unit <- tanru-unit-1 (CEI-clause free* tanru-unit-1)*
 
 tanru-unit-1 <- tanru-unit-2 linkargs?
@@ -311,6 +416,8 @@ tanru-unit-2 <-
 	NAhE-clause free* tanru-unit-2 /
 	NU-clause NAI-clause? free* (joik-jek NU-clause NAI-clause? free*)*
 		subsentence KEI-clause? free*
+
+6. 付加引数 (be ... bei ... be'o)
 
 ;-------------------------------------------------------------------
 ;-- #06 linkargs
@@ -342,6 +449,8 @@ links-sa <-
 	&links-1
 
 links-start <- BEI-clause
+
+7. 数式
 
 ;-------------------------------------------------------------------
 ;-- #07 mex
@@ -452,6 +561,8 @@ lerfu-word <-
 	LAU-clause lerfu-word /
 	TEI-clause lerfu-string FOI-clause
 
+8. 接続句
+
 ;-------------------------------------------------------------------
 ;-- #08 ek gihek jek joik gek guhek gik
 
@@ -487,6 +598,8 @@ gek <- SE-clause? GA-clause NAI-clause? free* / joik GI-clause free* / stag gik
 guhek <- SE-clause? GUhA-clause NAI-clause? free*
 
 gik <- GI-clause NAI-clause? free*
+
+9. 時制、法制タグ
 
 ;-------------------------------------------------------------------
 ;-- #09 tense and modal tag
@@ -543,6 +656,8 @@ interval-property <-
 	TAhE-clause NAI-clause? /
 	ZAhO-clause NAI-clause?
 
+10. 自由修飾句
+
 ;-------------------------------------------------------------------
 ;-- #0a free
 
@@ -572,6 +687,8 @@ indicator <-
 	((UI-clause / CAI-clause) NAI-clause? / DAhO-clause / FUhO-clause)
 	!BU-clause
 
+11. マジックワード (zei による複合単語や bu による文字を表す単語)
+
 ;-------------------------------------------------------------------
 ;-- #0b Magic words
 
@@ -595,6 +712,8 @@ pre-zei-bu-no-SA <- LOhU-pre / ZO-pre / ZOI-pre /
 		any-word si-clause?
 
 dot-star <- .*
+
+12. BAhE や UI 等の単語の前後にくっつけるもの
 
 ;-------------------------------------------------------------------
 ;-- #0c General Morphology Issues
@@ -632,6 +751,8 @@ known-cmavo-SA <-
 	VUhO-pre / VUhU-pre / XI-pre / ZAhO-pre / ZEI-pre / ZEhA-pre / ZI-pre /
 	ZIhE-pre / ZO-pre / ZOI-pre / ZOhU-pre
 
+13. 空白として扱われる構造
+
 ;-------------------------------------------------------------------
 ;-- #0d Handling of spaces and things like spaces.
 
@@ -655,6 +776,12 @@ si-word <- pre-zei-bu
 
 su-word <- !NIhO-clause !LU-clause !TUhE-clause !TO-clause !SU-clause
 	!FAhO-clause any-word-SA-handling
+
+14. セルマホ
+	ここでは、それぞれのセルマホに属する単語の前後に BAhE や UI を
+	つけたものを扱う。
+	本来字句解析で扱うべきものなのかもしれない。
+	それをむりやり構文解析で扱っているため文法が肥大している。
 
 ;-------------------------------------------------------------------
 ;-- #0e SELMAHO
@@ -1435,6 +1562,11 @@ ZOhU-clause <- ZOhU-pre ZOhU-post
 ZOhU-pre <- pre-clause ZOhU spaces?
 ZOhU-post <- post-clause
 ZOhU-no-SA-handling <- pre-clause ZOhU post-clause
+
+15. 単語の形態に関するもの 
+	yacc では扱わなかった字句解析に含まれる部分
+	cmene は子音で終わる、とか brivla は二重子音を含むとか
+	そういう話
 
 ;-------------------------------------------------------------------
 ;--- MORPHOLOGY ---
