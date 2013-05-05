@@ -87,8 +87,8 @@ I speak in-language Lojban.
 <title>&selma_o; BAhE</title>
 <reference path="./chapter19.html">第19章</reference>
 <description>
-次の一&word;を強調する。<!--
--->またはそれが&nonce_word;(その場で作った単語)であること&mark;。
+次の一&word;を強調する(ba'e)。<!--
+-->またはそれが&nonce_word;(その場で作った単語)であること&mark;(za'e)。
 </description>
 <example>
 <lojban>la ba'e .djordj. klama le zarci</lojban>
@@ -121,7 +121,7 @@ klama be ta (klama の x2 に ta がはいる) が troci にかかり「『あ�
 -->曖昧性がある。たとえば「あそこに行く」ことを「試み」の目的とする上記の訳以外に<!--
 -->、「あそこに行く」ことを「試み」の内容とする<!--
 -->「あそこに行ってみた(I try going to that place)」<!--
--->という解釈も可能となる。<!--
+-->という解釈も可能となるだろう。<!--
 -->その 2 つを訳しわけるならば、
 mi troci lonu (mi) klama ta (私はあそこに行こうとする)と
 mi troci fi lonu (mi) klama ta (私はあそこに行ってみた)となるだろう。
@@ -245,7 +245,7 @@ bo がなければ、ta (cmalu nixli) ckule のように左から結合し、<!-
 # 訳注: 新文法(提案されている文法?)では bo も左結合となる。
 bo で右結合となるのが便利な場面も考えられるが、<!--
 -->構文解析を複雑にするほどの利益はないということか。<!--
--->いずれにしても複雑な結合性を表す場合には明示的な「かっこ([cmavo 調べ中])」を使えば<!--
+-->いずれにしても複雑な結合性を表す場合には明示的な「かっこ(ke ... ke'e)」を使えば<!--
 -->よいと思う
 </note>
 
@@ -333,7 +333,7 @@ A talks to B about IBM computers.
 -->たいていは感情を&specify1;他の&particle;&be_followed;する。
 </description>
 <example><lojban>.ei cai mi klama le zarci</lojban>
-<japanese>店に行かなければならない。</japanese></example>
+<japanese>店に必ず行かなければならない。</japanese></example>
 <note># 訳注: .ei は義務を表す心態詞。eicai は強い義務を表現する。</note>
 <note># 訳注: particle を「小辞」と訳した</note>
 <note># 訳注: 「提案されている文法」では CAI は UI に統合されるようだが、
@@ -357,6 +357,9 @@ I must go to the market.
 <example><lojban>ro datka ka'e flulimna</lojban>
 <japanese>全てのアヒルは浮かんで泳ぐことができる。</japanese></example>
 
+<note># 訳注: おそらく、これらが明示的に付いていない場合、文脈によって<!--
+-->どれかが付いているかのように解釈されるのだと思われる</note>
+
 <en>
 Specifies whether a bridi refers to an actual fact,
 a potential (achieved or not), or merely an innate capability.
@@ -376,7 +379,7 @@ All ducks have the capability of swimming by floating.
 <japanese>これはプラスティックのキャットフード缶の蓋だ。
 緑のは大きい。赤いのは小さい。</japanese></example>
 <note>
-# 訳注: ((slasi je (mlatu bo cidja)) lante) gacri となると思う。<!--
+# 訳注: [{slasi je (mlatu bo cidja)} lante] gacri となると思う。<!--
 -->結合が bo > je > 無し かつ左結合なので。つまりプラスチックと猫の餌が缶にかかり、<!--
 -->それ全体が蓋にかかる。<!--
 -->よって slasi が「プラスチック製」を意味していたとしても蓋ではなく、<!--
@@ -407,7 +410,7 @@ The green thingy is large. The red thingy is small.
 -->または特別な&tense;の構造を作るために使われる。
 </description>
 <example><lojban>mi ce'e do pe'e je la djan. ce'e la djeimyz. cu pendo</lojban>
-<japanese>私は君の友達で、ジョーンはジェームズの友達だ。</japanese></example>
+<japanese>私は君の友達で、ジョンはジェームズの友達だ。</japanese></example>
 <note># 訳注: 「量を示す詞のかかる範囲をまとめ」るとは<!--
 -->「3匹の犬が2人の人にかみついた」という文章において<!--
 -->3匹の犬が「同じ」2人の人にという意味を示すということ</note>
@@ -494,6 +497,10 @@ The dog goes to-the store.
 <example><lojban>do cu'e klama le zarci</lojban>
 <japanese>いつ店に行くのですか。</japanese></example>
 
+<note>訳注: 「いつ」を聞いてるとは限らない。文脈によっては<!--
+-->「どのくらいの頻度で店に行くのか」を聞いているとの解釈も可能。この場合<!--
+-->答えは ta'e(習慣的に) つまり「いつも行ってるよ」のようになるだろう</note>
+
 <en>
 Forms a question which asks when, where, or in what mode the rest of the
 bridi is true.See PU, CAhA, TAhE, and BAI.
@@ -573,7 +580,7 @@ I go from Atlanta to Boston via the road using the car.
 -->VEhA や VIhA &prefix_v;その&direction;に沿って、を表す。
 </description>
 <example><lojban>le nanmu zu'a batci le gerku</lojban>
-<japanese>私の左で男が犬をかむ。</japanese></example>
+<japanese>(私の)左で男が犬をかむ。</japanese></example>
 
 <en>
 Specifies the direction in which, or toward which (when marked with
@@ -1130,7 +1137,7 @@ single marker: change from lower to upper case, change of font, punctuation, etc
 <title>&selma_o; LAhE</title><reference path="./chapter6.html">第6章</reference>
 <description>
 &sumti;&be_prefixed;、それを意味的に関係のある別の&sumti;に変える&qualifier;。<!--
--->&qualifier;はまた&selma_o; NAhE+BO からも作られる。LUhU &see;。
+-->&qualifier;には&selma_o; NAhE+BO の形もある。LUhU &see;。
 </description>
 <example><lojban>mi viska la'e zoi kuot. A Tale of Two Cities .kuot</lojban>
 <japanese>私は「二都物語」を見る。</japanese></example>
@@ -1332,6 +1339,7 @@ me は&sumti;からセルブリを作るのにも使われる。<!--
 -->というよりも、&sumti;をセルブリにすることで<!--
 -->タンルの要素にすることができるということなのではないだろうか</note>
 <note># 訳注: do me la djan. は do du la djan. と同じ</note>
+<note># 訳注: 新しい解釈では me はもっと広い意味のようだ -> あとで調べる</note>
 
 <en>
 Produces a tanru unit from a sumti, which is applicable to the things
@@ -1574,6 +1582,9 @@ the-number -5 is the negation-of the-number +5
 le ckule [nu'u]</lojban>
 <japanese>私は店に事務所から行き、そして家に学校から行く。</japanese></example>
 
+<note>訳注: 上記のような nu'i ... nu'u .e ... という構造は PEG の定義にはない。<!--
+--> camxes でも parse できない。廃止になったのか。あるいは PEG のバグか</note>
+
 <en>
 Marks the beginning of a termset, which is used to make simultaneous
 claims involving two or more different places of a selbri
@@ -1683,6 +1694,9 @@ I went to the market.
 <example><lojban>A: mi ba lumci le mi karce B: mi go'i ra'o</lojban>
 <japanese>A: 私は私の車を洗う B: 私もそうする(B の車を洗う)</japanese></example>
 
+<note>訳注: le mi karce の mi が ra'o により A から B となっている</note>
+<note>訳注: B: go'i ra'o でも同じ意味と思われるが</note>
+
 <en>
 The pro-bridi update flag: changes the meaning of sumti implicitly
 attached to a pro-bridi (see GOhA) to fit the current context rather than
@@ -1748,6 +1762,8 @@ Also used in constructing connective and modal compound cmavo.
 <japanese>フランク(彼は幸せだ)はジェーンを愛している。</japanese></example>
 <note># 訳注: ここで se'u を省略できる理由は、sei に続く&bridi;に、<!--
 -->&selbri;の後に&sumti;を持てないという制約があるからである</note>
+<note># 訳注: 上記の制約は新文法ではなくなるようだ。<!--
+-->あったほうが便利な気もするが。parser が単純化できるのかな</note>
 <delete>
 <note># 訳注: どうしてここで se'u が省略できるのか。
 la djein. が gleki の x2 とならないのは何故か。
