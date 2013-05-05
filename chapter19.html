@@ -833,68 +833,72 @@
 <p>注意：現在の構文解析器は、“su” や “susu”による消去を実装していない。（訳注：同上）</p>
 <hr />
 
-<h3>14. Hesitation: Y</h3>
-<p>The following cmavo is discussed in this section:</p>
+<h3>14. フィラー: Y</h3>
+<p>本節では、以下のシマヴォを取り扱う：</p>
 <pre>
-     .y.     Y       hesitation noise
+     .y.     Y       躊躇のフィラー
 </pre>
-<p>Speakers often need to hesitate to think of what to say next or for some extra-linguistic reason. There are two ways to hesitate in Lojban: to pause between words (that is, to say nothing) or to use the cmavo “.y.” (of selma'o Y). This resembles in sound the English hesitation noise written “uh” (or “er”), but differs from it in the requirement for pauses before and after. Unlike a long pause, it cannot be mistaken for having nothing more to say: it holds the floor for the speaker. Since vowel length is not significant in Lojban, the “y” sound can be dragged out for as long as necessary. Furthermore, the sound can be repeated, provided the required pauses are respected.</p>
-<p>Since the hesitation sound in English is outside the formal language, English-speakers may question the need for a formal cmavo. Speakers of other languages, however, often hesitate by saying (or, if necessary, repeating) a word (“este” in some dialects of Spanish, roughly meaning “that is”), and Lojban’s audio-visual isomorphism requires a written representation of all meaningful spoken behavior. Of course, “.y.” has no grammatical significance: it can appear anywhere at all in a Lojban sentence except in the middle of a word.</p>
+<p>話者は、次に言うことを考えたり、何らかのメタ言語的な理由により躊躇する必要がある。ロジバンでは躊躇するのに２つの方法がある。語の間で休止する（つまり、何も言わない）か、シマヴォ “ .y. ” (セルマホ Y) を使う。これは、英語で “uh” や “er” と書かれる躊躇フィラーに音が似ているが、前後に休止を挟む点が違う。長い休止とは違い、もう何もいうことが無いと誤解される可能性がなく、話者が発言権を保持できる。ロジバンでは母音の長さは重要ではないので、“y”の音は必要なだけ伸ばすことができる。さらに、付随する休止を守る限り、音を繰り返すこともできる。</p>
+
+<p>英語における躊躇のフィラーは正式な言語の外にあるため、英語話者にとって正式なシマヴォが必要であることは疑問であるかもしれない。しかし、他の言語では、単語を言ったり繰り返したりして躊躇する（あるスペイン語の方言において「つまり」を意味する “este”など）。さらに、ロジバンには音綴同形の原則があるため、意味のある発話はすべて書き言葉でも表現する。もちろん、“.y. ”は文法的には意味を持たない。単語の真ん中を除いて、ロジバン文のいかなる場所にも出現できる。</p>
+
 <hr />
 
-<h3>15. No more to say: FAhO</h3>
-<p>The following cmavo is discussed in this section:</p>
+<h3>15. テキストの終了: FAhO</h3>
+<p>本節では、以下のシマヴォを取り扱う：</p>
 <pre>
-     fa'o    FAhO    end of text
+     fa'o    FAhO    テキストの終了
 </pre>
-<p>The cmavo “fa'o” (of selma'o FAhO) is the usually omitted marker for the end of a text; it can be used in computer interaction to indicate the end of input or output, or for explicitly giving up the floor during a discussion. It is outside the regular grammar, and the machine parser takes it as an unconditional signal to stop parsing unless it is quoted with “zo” or with “lo'u ... le'u”. In particular, it is not used at the end of subordinate texts quoted with “lu ... li'u” or parenthesized with “to ... toi”.</p>
+<p>シマヴォ “fa'o” (セルマホ FAhO) は、テキストの終わりを表し、通常省略される。コンピュータとのやりとりにて、入力や出力の終わりを示したり、会話において発言権を明示的に譲ったりする時に使う。これは通常の文法の外であり、機械パーサーはこれを受け取ると、それが “zo” や “lo'u ... le'u”で引用されていない限り、無条件に構文解析を停止するという意味になる。特に、“lu ... liu”の引用や “to ... toi” で囲まれた付属テキストの最後では使われない。</p>
+
 <hr />
 
-<h3>16. List of cmavo interactions</h3>
-<p>The following list gives the cmavo and selma'o that are recognized by the earliest stages of the parser, and specifies exactly which of them interact with which others. All of the cmavo are at least mentioned in this chapter. The cmavo are written in lower case, and the selma'o in UPPER CASE.</p>
+<h3>16. シマヴォ相互作用のリスト</h3>
+<p>以下のリストは、パーサーの最初の段階で認識されるシマヴォとセルマホのリストであり、それぞれがどのように相互作用するかを示している。すべてのシマヴォは本章で言及がある。シマヴォは小文字で、セルマホは大文字で表される。</p>
+
 <ul>
-<li>“zo” quotes the following word, no matter what it is.</li>
-<li>“si” erases the preceding word unless it is a “zo”.</li>
-<li>“sa” erases the preceding word and other words, unless the preceding word is a “zo”.</li>
-<li>“su” is the same as “sa”, but erases more words.</li>
-<li>“lo'u” quotes all following words up to a “le'u” (but not a “zo le'u”).</li>
-<li>“le'u” is ungrammatical except at the end of a “lo'u quotation.</li>
-<li>ZOI cmavo use the following word as a delimiting word, no matter what it is, but using “le'u” may create difficulties.</li>
-<li>“zei” combines the preceding and the following word into a lujvo, but does not affect “zo”, “si”, “sa”, “su”, “lo'u”, ZOI cmavo, “fa'o”, and “zei”.</li>
-<li>BAhE cmavo mark the following word, unless it is “si”, “sa”, or “su”, or unless it is preceded by “zo”. Multiple BAhE cmavo may be used in succession.</li>
-<li>“bu” makes the preceding word into a lerfu word, except for “zo”, “si”, “sa”, “su”, “lo'u”, ZOI cmavo, “fa'o”, “zei”, BAhE cmavo, and “bu”. Multiple “bu” cmavo may be used in succession.</li>
-<li>UI and CAI cmavo mark the previous word, except for “zo”, “si”, “sa”, “su”, “lo'u”, ZOI, “fa'o”, “zei”, BAhE cmavo, and “bu”. Multiple UI cmavo may be used in succession. A following “nai” is made part of the UI.</li>
-<li>“.y.”, “da'o”, “fu'e”, and “fu'o” are the same as UI, but do not absorb a following “nai”.</li>
+  <li>“zo” は次の語を、それが何であれ引用する。</li>
+  <li>“si”は、前の語を、それが“zo”でない限り消去する。</li>
+  <li>“sa”は、前の語と他の語（構造）を、それが“zo”でない限り消去する。</li>
+  <li>“su”は“sa”と同じであるが、より多くの語を消去する。</li>
+  <li>“lo'u”は、“le'u”までを引用する（ただし “zo le'u” は除く）</li>
+  <li>“le'u”は、“lo'u”引用の最後以外の場所では非文法的である。</li>
+  <li> ZOI シマヴォは、次の語が何であれそれを区切り語として使うが、“le'u”を使うと面倒なことになることがある。</li>
+  <li> “zei”は前の語と次の語を組み合わせてルジヴォを作るが、“zo”, “si”, “sa”, “su”, “lo'u”, ZOI シマヴォ, “fa'o”, “zei” には影響しない。</li>
+  <li> BAhE シマヴォは次の語を強調するが、その前に“zo”が続いている場合を除き、“si”, “sa”, “su”には作用しない。複数の BAhE シマヴォを連続して使うこともできる。</li>
+  <li> “bu” は前の語をレルフ詞へと変換する。ただし、“zo”, “si”, “sa”, “su”, “lo'u”, ZOI シマヴォ, “fa'o”, “zei”, BAhE シマヴォ, “bu” を除く。複数の “bu” を連続して用いることもできる。</li>
+  <li> UI と CAI は、前の語を修飾する。ただし、“zo”, “si”, “sa”, “su”, “lo'u”, ZOI, “fa'o”, “zei”, BAhE シマヴォ, “bu” の場合は除く。複数の UI を連続して使ってもよい。続く “nai”は UI の一部分であると見なされる。</li>
+  <li>“.y.”, “da'o”, “fu'e”, “fu'o” は UI と同じであるが、続く “nai” を取り込むことはない。</li>
 </ul>
 <hr />
 
-<h3>17. List of Elidable Terminators</h3>
-<p>The following list shows all the elidable terminators of Lojban. The first column is the terminator, the second column is the selma'o that starts the corresponding construction, and the third column states what kinds of grammatical constructs are terminated. Each terminator is the only cmavo of its selma'o, which naturally has the same name as the cmavo.</p>
+<h3>17. 省略可能な終端詞のリスト</h3>
+<p>以下のリストは、ロジバンにおける全ての省略可能な終端詞のリストである。最初の列は終端詞、次の列は対応する構造を開始するセルマホ、最後の列はどのような構造を終端するかを示している。各終端詞は、同名のセルマホに属し、そのセルマホにはその終端詞のシマヴォのみが含まれる。</p>
+
 <pre>
-     be'o    BE              sumti attached to a tanru unit
-     boi     PA/BY           number or lerfu string
-     do'u    COI/DOI         vocative phrases
-     fe'u    FIhO            ad-hoc modal tags
-     ge'u    GOI             relative phrases
-     kei     NU              abstraction bridi
-     ke'e    KE              groups of various kinds
-     ku      LE/LA           description sumti
-     ku'e    PEhO            forethought mekso
-     ku'o    NOI             relative clauses
-     li'u    LU              quotations
-     lo'o    LI              number sumti
-     lu'u    LAhE/NAhE+BO    sumti qualifiers
-     me'u    ME              tanru units formed from sumti
-     nu'u    NUhI            forethought termsets
-     se'u    SEI/SOI         metalinguistic insertions
-     te'u    various         mekso conversion constructs
-     toi     TO              parenthetical remarks
-     tu'u    TUhE            multiple sentences or paragraphs
-     vau     (none)          simple bridi or bridi-tails
-     ve'o    VEI             mekso parentheses
+     be'o    BE              タンル単位に付属したスムティ
+     boi     PA/BY           数・レルフ文字列
+     do'u    COI/DOI         呼応句
+     fe'u    FIhO            アドホックな法制タグ
+     ge'u    GOI             関係句
+     kei     NU              抽象化ブリディ
+     ke'e    KE              様々なグループ
+     ku      LE/LA           記述スムティ
+     ku'e    PEhO            前置メクソ
+     ku'o    NOI             関係節
+     li'u    LU              引用
+     lo'o    LI              数スムティ
+     lu'u    LAhE/NAhE+BO    スムティ限定詞
+     me'u    ME              スムティから作ったタンル単位
+     nu'u    NUhI            前置名辞組
+     se'u    SEI/SOI         メタ言語的挿入
+     te'u    various         メクソ変換構造
+     toi     TO              括弧コメント
+     tu'u    TUhE            複数の文や段落
+     vau     (none)          単ブリディ・ブリディ末端
+     ve'o    VEI             メクソ括弧
 </pre>
 <hr />
-
 
 
 <div class="nav">
