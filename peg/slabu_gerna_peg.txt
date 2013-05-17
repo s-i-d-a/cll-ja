@@ -194,7 +194,7 @@ fragment <-
 
 上記の「記述」の代わりに置くことのできる「断片」。
 上のほうの (statement / fragment) という定義を見よ。
-質問の質問の答えに使われる。それ以外の用途があるかどうかは知らない。
+質問の答えに使われる。それ以外の用途があるかどうかは知らない。
 
 prenex <- terms ZOhU-clause free*
 
@@ -223,7 +223,7 @@ sentence-sa <-
 
 文というレベルでの sa による打ち消し。
 SA-clause は sa の前後に BAhE や UI 等がついたもの。
-[selma'o]-clause という形の多くはそのような構造を表している。
+[SELMAHO]-clause という形の多くはそのような構造を表している。
 また、sa-word はいくつかの特殊な構造を除いたほとんどの単語。
 
 つまり文レベルでの sa による打ち消しは、
@@ -239,12 +239,13 @@ sentence-start <- I-pre / NIhO-pre
 ...-start という形は sa による打ち消しのためだけに使われる。
 ほとんどの構造にこれら sa のための文法構造が必要。
 zasni gerna で sa を廃止することにしたのは、
-このような本質的でない部分が、
+このような、本質的でない部分が、
 文法を複雑にするのを避けるためもあるだろう。
 また、sa は文法的に同等の構造を打ち消すということだが、
 何が文法的に同等であると考えるのかという点にも恣意性がある。
-(もちろん、PEG で唯一に決まることはできるが、
-それを人間の頭でパースすることは困難と思われる)
+(もちろん、PEG で唯一に決めることはできるが、
+それを人間の頭で正確にパースすることは困難と思われる。
+たとえば、.e と joi は 同じ構造と見なされるかどうか、等。)
 
 subsentence <- sentence / prenex subsentence
 
@@ -269,14 +270,14 @@ bridi-tail-sa <-
 	SA-clause
 	&bridi-tail
 
-bridi-tail レベルの sa による打ち消し。今回は詳述しない。
+bridi-tail レベルの sa による打ち消し。詳述しない。
 
 bridi-tail-start <-
 	ME-clause / NUhA-clause / NU-clause / NA-clause !KU-clause /
 	NAhE-clause !BO-clause / selbri / tag bridi-tail-start /
 	KE-clause bridi-tail-start / bridi-tail
 
-sa による打ち消しのために必要な構造。今回は詳述しない。
+sa による打ち消しのために必要な構造。詳述しない。
 
 bridi-tail-1 <- bridi-tail-2
 	(gihek !(stag? BO-clause) !(stag? KE-clause) free* bridi-tail-2 tail-terms)*
@@ -288,7 +289,7 @@ bridi-tail-1 <- bridi-tail-2
 bridi-tail-2 <- bridi-tail-3 (gihek stag? BO-clause free* bridi-tail-2 tail-terms)?
 
 上記の構造と同様だが bo がついている。強い結合性を持つ。
-bo は現行文法では右結合なので、ここも右結合となるようになっている。
+bo は現行文法では右結合なので、そのような構造になっている。
 
 bridi-tail-3 <- selbri tail-terms / gek-sentence
 
@@ -308,7 +309,7 @@ gek-sentence も bridi-tail となる。
 また、sentence ではなく subsentence となっているのは、
 prenex をつけることができるということ。
 
-mi ge lo gerku zo'u do klama gi lo mlatu ti klama
+mi ge lo gerku zo'u do klama gi lo mlatu zo'u ti klama
 (私は犬についてはあなたのところへ行き、猫についてはそこに行く)
 犬をつれて聞き手の家に行き、
 猫をつれてどこか他の場所に行くといった感じ。
@@ -496,11 +497,15 @@ sumti-tail-1 <-
 
 relative-clauses <- relative-clause (ZIhE-clause free* relative-clause)*
 
+関係節は zi'e でつなぐことができる。
+
 ;; relative-clause <-
 ;;	GOI-clause free* term GEhU-clause? free* /
 ;;	NOI-clause free* subsentence KUhO-clause? free*
 
 relative-clause <- relative-clause-sa* relative-clause-1
+
+sa の追加。
 
 relative-clause-sa <-
 	relative-clause-start
@@ -508,11 +513,17 @@ relative-clause-sa <-
 	SA-clause
 	&relative-clause-1
 
+sa の定義。
+
 relative-clause-1 <-
 	GOI-clause free* term GEhU-clause? free* /
 	NOI-clause free* subsentence KUhO-clause? free*
 
+NOI による関係節と GOI による関係句を定義している。
+
 relative-clause-start <- GOI-clause / NOI-clause
+
+sa のための構造。
 
 5. セルブリ、タンル単位
 
@@ -523,22 +534,80 @@ relative-clause-start <- GOI-clause / NOI-clause
 
 selbri <- tag? selbri-1
 
+セルブリにはタグをつけることができる。
+mi bai tavla bau la lojban や、mi pu klama のような構造。
+ただし、本当は mi pu klama と書くと mi pu ku klama と書いたように構文解析
+されてしまう(camxes と自作のパーサで確認)。
+mi cu pu klama と書かないと上記の構造にならない。
+
+意味論は文法構造からはある程度独立しているので問題ないのかもしれないが、
+厳密に言えば、mi pu ku klama と mi cu pu klama とは意味に違いがあるように思う。
+前者では pu のあとにスムティが省略されていると考えられるので、
+「私は(何らかの出来事)の前に行く」となり後者は「私は(今より前に)行った」となり、
+意味が変わってくるだろう。
+mi pu klama は mi cu pu klama と解釈されて欲しいように思う。
+ここらへんは文法を書き換える必要がある。
+
+時制の場合には selbri に直接ついたときに基準を「今」とするというきまりがあるため、
+上記の問題が生じるが、BAI に関してはどちらにしてもタグがつく対象は「暗黙の何か」
+なので問題は生じない。
+
 selbri-1 <- selbri-2 / NA-clause free* selbri
+
+selbri には na をつけることができる。
+NA-clause selbri-1 ではなく NA-clause selbri となっているので、
+mi na bai na bau tavla のように na と tag を交互に入れることができる。
+na の連続は許されるが、tag の連続は許されない。
+意味はよくわからない。
+一見すると「私は強いられてでもなく、何らかの言語ででもなくしゃべる」
+としそうだが、 mi na (bai (na (bau tavla) なので、
+「私は、(強いられて、何らかの言語で話さない)わけではない」となるだろうか。
+文法構造から直接的に意味を導けば後者となるだろう。
+前者は mi na'e bai je na'e bau tavla となるだろうか。
 
 selbri-2 <- selbri-3 (CO-clause free* selbri-2)?
 
+co によるタンルの生成。
+ここを見ると co は右結合となっているが、CLL でそういう記述は無かったように思うが、
+mi (gerku zdani) klama (私は犬小屋的に行く)は、
+mi klama co (zdani co gerku) とするためには右結合のほうが都合がいい。
+
 selbri-3 <- selbri-4+
+
+co, ke, bo のいずれもつかないタンル。
+
+ここまで見てきた ke の処理のしかたは、
+ke の前後の結びつきを弱くするという形だったが、
+ここでは、ke の後の構造のまとまりを強くするという形で同様のことを行っている。
+上と同様のことをしようとすれば、selbri-x <- selbri-3 (ke selbri-x ke'e?)?
+のようになるだろうか。
+ただし、これだと ke melbi cmalu ke'e nixli ckule のような構造は作れない。
 
 selbri-4 <-
 	selbri-5
 	(joik-jek selbri-5 / joik stag? KE-clause free* selbri-3 KEhE-clause?
 		free*)*
 
+joi や je でつながれたタンル。
+joik stag? KE-clause selbri-3 の部分は klama joi bai ke prami
+のような構造を許す。
+しかし、klama je bai ke prami のような構造は許されない。
+理由は不明。
+
 selbri-5 <- selbri-6 ((jek / joik) stag? BO-clause free* selbri-5)?
+
+(joi or je) + bo でつながれたタンル。
+これは、klama je bai bo prami のような構造も許す。
+
+joik-jek と jek / joik の使い分けはよくわからない。
+違いは順番の違いと free* がつくかつかないかの違いだが。
 
 selbri-6 <-
 	tanru-unit (BO-clause free* selbri-6)? /
 	NAhE-clause? free* guhek selbri gik selbri-6
+
+タンル単位を bo でつないだもの。
+または gu'e klama gi prami のような構造。
 
 5-2. タンル単位
 
