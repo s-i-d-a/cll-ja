@@ -613,7 +613,11 @@ selbri-6 <-
 
 tanru-unit <- tanru-unit-1 (CEI-clause free* tanru-unit-1)*
 
+cei による代入は複数つけられる。
+
 tanru-unit-1 <- tanru-unit-2 linkargs?
+
+linkargs は be ... bei ... be'o の構造。
 
 ; ** zei is part of BRIVLA-clause
 tanru-unit-2 <-
@@ -630,6 +634,14 @@ tanru-unit-2 <-
 	NU-clause NAI-clause? free* (joik-jek NU-clause NAI-clause? free*)*
 		subsentence KEI-clause? free*
 
+タンル単位になれるものの一覧。
+ブリブラそのもの、任意の RAhO のつく GOhA、ke でくくられたセルブリ。
+そして、me (sumti / lerfu-string) やそれに moi 等がついたもの、
+または (number / lerfu-string) MOI。
+nu'a によってセルブリ化された演算子。
+タンル単位に SE, JAI または NAhE をつけたもの。
+または nu 節。
+
 6. 付加引数 (be ... bei ... be'o)
 
 ;-------------------------------------------------------------------
@@ -639,7 +651,11 @@ tanru-unit-2 <-
 
 linkargs <- linkargs-sa* linkargs-1
 
+sa については説明しない。
+
 linkargs-1 <- BE-clause free* term links? BEhO-clause? free*
+
+付加引数は be の後に項が来てその後に任意の bei ... bei ... が続き be'o で終わる。
 
 linkargs-sa <-
 	linkargs-start
@@ -647,13 +663,21 @@ linkargs-sa <-
 	SA-clause
 	&linkargs-1
 
+sa については説明しない。
+
 linkargs-start <- BE-clause
+
+sa については説明しない。
 
 ;; links <- BEI-clause free* term links?
 
 links <- links-sa* links-1
 
+sa については説明しない。
+
 links-1 <- BEI-clause free* term links?
+
+bei term という構造のくりかえし、ここでは右結合となっている。
 
 links-sa <-
 	links-start
@@ -663,20 +687,32 @@ links-sa <-
 
 links-start <- BEI-clause
 
+sa については説明しない。
+
 7. 数式
 
 ;-------------------------------------------------------------------
 ;-- #07 mex
 
+quantifier と mex の二つがあり、前者は主にスムティの修飾に使われ、
+後者は li によるスムティ化等に使われる。
+
 quantifier <-
 	number !MOI-clause BOI-clause? free* /
 	VEI-clause free* mex VEhO-clause? free*
+
+MOI の続かない number に任意の BOI が続いたもの、
+または vei と ve'o でくくられた mex がスムティを修飾できる。
 
 ;;mex <- mex-1 (operator mex-1)* / rp-clause
 
 mex <- mex-sa* mex-0
 
+sa については(以下略)
+
 mex-0 <- mex-1 (operator mex-1)* / rp-clause
+
+mex-0 は mex-1 を演算子でつないだもの(左結合)または、逆ポーランド記法の数式。
 
 mex-sa <-
 	mex-start
@@ -686,11 +722,20 @@ mex-sa <-
 
 mex-start <- FUhA-clause / PEhO-clause / operand-start
 
+sa については ...
+
 rp-clause <- FUhA-clause free* rp-expression
+
+逆ポーランド記法の数式には fu'a をつける。
 
 mex-1 <- mex-2 (BIhE-clause free* operator mex-1)?
 
+bi'e によって結合を強化された演算子。
+x <- y (op x)? の形で右結合ということを示している。
+
 mex-2 <- operand / mex-forethought
+
+演算子で結合される数式は、被演算子そのものか、または前置式で書かれた数式。
 
 ; This is just to make for clearer parse trees
 mex-forethought <- PEhO-clause? free* operator fore-operands KUhE-clause? free*
@@ -709,6 +754,32 @@ rp-expression-tail <- rp-expression operator rp-expression-tail / ()
 ;; operator <- operator-1 (joik-jek operator-1 / joik stag? KE-clause free* operator KEhE-clause? free*)*
 
 operator <- operator-sa* operator-0
+
+また、sa だ。
+sa のためにどんだけの行を費さなければならんのだ!
+---> 新文法では sa は廃止にしよう。しかし代替案は?
+---> lo'ai ... sa'ai ... le'ai は PEG では扱えない。
+---> PEG 文法内で変数が使えればできる。
+---> もともと、打ち消しは字句解析が得意とする部分。
+---> 字句解析と構文解析とを分ければ解決するが、
+---> そうすると PEG の良さが半減してしまう。
+---> si, sa, su, ba'e, ui 等はもともと字句解析に向いた文法要素。
+---> もともと yacc が使われていたため、よく合っていた。
+---> PEG に移行するにあたって、大幅な文法構造の改善が必要。
+
+---> つまり、一次元的な構造と樹構造とが混在する構造だったと言える。
+---> UI は単に並列な並びだし、fu'e ... fu'o を見るとよくわかる。
+---> ここらへんは yacc の字句解析 -> 構文解析 というやりかたの影響が強い。
+---> 例えば、fu'e ... fu'o が文法構造を踏み越える必要があるかどうか、等。
+---> 樹構造に統一することで表現力の低下はあるだろうか。
+---> それが無ければ樹構造に統一するべきだろう。
+
+---> たとえば、sa を文法的に完成した構造だけを消去するようにすれば、
+---> 構文解析の邪魔にはなりにくいと思われる。
+---> ただし、そうすると「まちがった」言葉を取り消すという sa の
+---> 存在意義が薄れる。
+
+---> si, sa, su を適用するには字句解析が必要 -> 字句解析がダブる -> 美しくない
 
 operator-0 <- operator-1
 	( joik-jek operator-1
