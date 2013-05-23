@@ -111,7 +111,7 @@ A<sub>1</sub>,...,A<sub>n</sub>⊢B<sub>1</sub>,...,B<sub>n</sub><br />
        私は店に行かない。 
 </pre>
 <p>ロジバンの内部ブリディ否定 (internal bridi negation) 「na」は、自然言語における否定と違って、常にブリディ全体に係り、常に矛盾否定である。 つまりこの否定文は、元のブリディ全体の言明と矛盾する（両立しない）。 </p>
-<div class="notci"># 内部ブリディ否定 (internal bridi negation) ：内部否定 (internal negation) をブリディに適用したもの<b>ではない</b>。 <a href="chapter16.html#16.9">第16章第9節</a>の記述に基づけば、ロジバンの内部ブリディ否定は、述語論理における<b>最も外側の外部否定</b>に等しい真理値を持つ。 <br />
+<div class="notci"># 内部ブリディ否定 (internal bridi negation) ：内部否定 (internal negation) をブリディに適用したもの<b>ではない</b>。 <a href="chapter16.html#16.9">第16章第9節</a>の記述に基づけば、ロジバンの内部ブリディ否定は、述語論理における<b>最も外側の外部否定</b>に等しい真理値を持つ（ただし、2004年以降に提案されている意味論では、必ずしも最も外側にならない。詳しくは<a href="#notci_na_naku">この次の訳注</a>を参照）。 <br />
 「現在のフランス国王は禿げている」という命題と、その否定「現在のフランス国王は禿げていない」という命題の真理値を考える。 どちらかを偽とすれば、排中律により、もう一方は真となるはずだが、「現在のフランス国王」が存在しない場合、どちらも真とは言えないように見える。 そこで、「現在のフランス国王は禿げている」という文の真理値を決めるために、命題自体の否定（内部否定）のほかに、「『現在のフランス国王』が存在する」という前提の否定（外部否定）を導入する。 <br />
 「現在のフランス国王は禿げている」を、述語論理の記号で書くと、以下のようになる（「xは現在のフランス国王である」を「王(x)」、「xは禿げている」を「禿(x)」と表している）。 これらの記号列は、ロジバンでは量化型変項 da（<a href="chapter16.html">第16章</a>で解説）を使って正確に表現できる。 <br />
 <table border="0" style="font-size: small">
@@ -162,6 +162,30 @@ A<sub>1</sub>,...,A<sub>n</sub>⊢B<sub>1</sub>,...,B<sub>n</sub><br />
 つまり、この naku は冠頭内で最も右に置かれている。
 <br />
 <a href="http://fr.wikipedia.org/wiki/N%C3%A9gation_(linguistique)#La_calvitie_du_roi_de_France">参考：否定についての説明（フランス語）</a>
+</div>
+<a id="notci_na_naku" name="notci_na_naku"><div class="notci">[2004年以降に提案されている意味論]<br />
+<a href="http://www.lojban.org/tiki/scope+of+na">内部ブリディ否定の na が常に最も外側の naku に等しいと考えると、論理接続とともに na を使った場合に、2種類の相容れない解釈が可能になってしまう。</a> 例えば
+<blockquote>(1) mi su'o da do ge na dunda gi na lebna </blockquote>
+という文を考える。これは、 na が論理接続 ge ... gi ... の内部にあるので、意味としては「少なくとも1つのものが存在し、私はそのものをあなたに与えない、しかもあなたから取らない」と解釈できそうである。ところが、これらの内部ブリディ否定の na が、冠頭で最も左の naku に等しいとしても、どのように書き換えられるのか、はっきりしない。<br />
+一方、<a href="chapter16.html#16.12">ド・モルガンの法則</a>により、 (1) の na を ge ... gi ... という論理接続の外側に出すと、 (1) は
+<blockquote>(2) mi su'o da do na ga dunda gi lebna </blockquote>
+に等しい。この na も内部ブリディ否定であるから、最も外側の naku に等しいと考えると
+<blockquote>(3) naku su'o da zo'u mi da do ga dunda gi lebna </blockquote>
+と書き換えられる。これは「次のようなものは存在しない：私がそのものをあなたに与えるか、またはあなたから取る」という意味になる。
+(3) は (1) から導き出されたのに、 (1) の解釈は、明らかに (3) と異なる。<br />
+このような解釈の不整合を無くすために、以下の解釈を適用する。
+<blockquote>
+1. 文の構成要素のうち、意味論的にブリディ全体に係るものを 「ブリディ演算子 (bridi operator)」と呼ぶ。 束縛変項 (da, de, di) に付く数量詞（<a href="http://www.lojban.org/tiki/BPFK+Section%3A+gadri">formal definition</a> に従って、束縛変項が省略された形の場合も含む）、論理接続、間制詞、法制詞、na(ku) はブリディ演算子である（<a href="https://groups.google.com/d/topic/lojban/PhZD1fO64jc/discussion">参考</a>）。 これはブリディ全体に係るものだから、名辞の形で表現できるものであれば、冠頭の名辞として置き換えても意味は変わらない。
+</blockquote>
+<blockquote>
+2. 1つのブリディ内に、ブリディ演算子が2つ以上現れる場合は、先に現れるブリディ演算子の方が外側に係る。
+</blockquote>
+この解釈を適用すれば、 <br />
+(1) の na は、そのままでは一番外側の naku にならない。 (1) のブリディ演算子の係り関係は (su'o da (ge (na) gi (na))) となる。<br />
+(1) は (2) の形に書き換えられるが、 (3) に形にはならない。 (2) の係り関係は (su'o da (na (ga gi))) となる。<br />
+(2) の形から、さらに na を su'o da の外側に移動するためには、 <a href="chapter16.html#16.9">su'o da を ro da に変える必要がある</a>: 
+<blockquote>(3') naku ro da zo'u mi da do ga dunda gi lebna </blockquote>
+これは「すべてのものについて、次のことが成り立つわけではない：私がそのものをあなたに与えるか、またはあなたから取る」という意味になる。 これは、最初の (1) の解釈と整合性がある。
 </div>
 <p><span class="notci"># 日本語の「ない」の意味は曖昧なので、</span>ブリディ否定「na」は「偽」と訳す方が正確だ。 他の例をいくつか挙げよう。 </p>
 <pre>
