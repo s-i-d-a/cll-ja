@@ -87,7 +87,7 @@ ZOI の部分だけ事前の字句解析をしておくか、あるいは PEG �
 papillon 自体のパーサが papillon で作られているので上記は同時進行中。
 
 ZOI は以下のようにできる。
-zoi :: Type = b:word ws:word* e:word[e == b]	{ (b, ws, e) }
+zoi :: Type = b:word ws:(w:word[w /= b] { w })* e:word[e == b]	{ (b, ws, e) }
 前に出て来ている b を後に出てくる e を定義する部分で使えるのがミソ。
 
 ちなみに回文もパース可能(ただし、以下は偶数文字のみ)。
