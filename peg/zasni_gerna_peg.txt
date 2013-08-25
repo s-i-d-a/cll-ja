@@ -4,6 +4,8 @@ Don't take the contents of this page too seriously for now.
 In ((zasni gerna cenba vreji))
 I will try to keep a record of the changes as I make them. mi'e ((xorxes))
 
+http://www.lojban.org/tiki/zasni+gerna
+
 ; ****** GRAMMAR ****** 
 
 text <- words-SU* SI-tail* post paragraphs FAhO#? 

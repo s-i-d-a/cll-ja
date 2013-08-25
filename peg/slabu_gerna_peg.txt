@@ -47,8 +47,8 @@ cmavo の列挙部分がその半分を占める。
 さらに、多くの行が sa による打ち消しを実現するために使われている。
 よって実質的に重要なのは全体の 1/3 ほどであると思われる。
 
-今のところ予習は 3. の項、スムティのところまでなので、
-それ以降は来週に回すということで。
+今のところ予習は 7. の数式の途中のところまでなので、
+それ以降は次回に回すということで。
 
 ; This is a Parsing Expression Grammar for Lojban.
 ; See http://www.pdos.lcs.mit.edu/~baford/packrat/
@@ -92,6 +92,11 @@ name <- peg-expression
 上記説明に足りないものとして !exp はその位置に exp が来ないことを、
 &exp はその位置に exp が来ることを示す。
 また ; ではじまる行はコメント。
+
+また、このファイルでは左結合を a <- b b* のように表し、
+右結合を a <- b a のように表している。
+PEG が左再帰を扱えないためこのようになっている。
+本来ならば左結合は a <- a b のようになる(BNF ならそう表現すると思う)。
 
 1. 文章、段落、記述 (文よりも大きなまとまり)
 
@@ -146,6 +151,7 @@ paragraph <-
 statement <- statement-1 / prenex statement
 
 記述には prenex がいくつでもつけられる。
+
 以下、joik-jek や bo の存在による結合性の強さを区別するために
 何段階かに分かれている。
 
@@ -176,7 +182,8 @@ bo 同士では右結合となることも示している。
 が、意味論的あるいは実用的にどのような意味があるのかは僕にはわからない。
 
 (注)
-基本的に a <- b (op c)* は左結合を、a <- b (op a)? は右結合を示す。
+このファイルでは a <- b (op c)* は左結合を、a <- b (op a)? は右結合を
+表している。
 ちなみに、左結合は本来ならば a <- a (op b)? とするべきだが、
 PEG では左再帰を扱えない(無限ループになる)ために * による
 くりかえしを使っている。
@@ -232,7 +239,7 @@ SA-clause は sa の前後に BAhE や UI 等がついたもの。
 最後の text-1 に & がついていることに注意。
 これは後に text-1 が来るという条件を示すが、
 それ自体は sentence-sa を構成しないということを示している。
-&text-1 は「トークンを消費しない」と言っても同じこと。
+&text-1 は「トークンを消費しない」ということ。
 
 sentence-start <- I-pre / NIhO-pre
 
@@ -259,7 +266,7 @@ bridi-tail <- bridi-tail-1
 
 この bridi-tail と bridi-tail-1, bridi-tail-2 とは
 ke による結合性の低下、そのままの結合性、bo による結合性の強化
-の三者で、それぞれのレベルで gi'e を足している。
+の三者で、それぞれのレベルで gi'e 等を足している。
 また、gi'e によって結合された bridi-tail はそれぞれの
 末端項(tail-terms)とは別に共通の末端項を持てるということもここで
 示されている。
@@ -289,7 +296,7 @@ bridi-tail-1 <- bridi-tail-2
 bridi-tail-2 <- bridi-tail-3 (gihek stag? BO-clause free* bridi-tail-2 tail-terms)?
 
 上記の構造と同様だが bo がついている。強い結合性を持つ。
-bo は現行文法では右結合なので、そのような構造になっている。
+bo は現行文法では右結合なので、a <- b a のような構造になっている。
 
 bridi-tail-3 <- selbri tail-terms / gek-sentence
 
@@ -387,7 +394,7 @@ gek-termset <- gek terms-gik-terms
 (ge 項1 項2 項3 項4 gi 項1' 項2' 項3' 項4')という構造。
 こういう形の名辞組について CLL に記載があったかどうか覚えていないが、
 意味は類推できるように思う。
-(nu'i ge ... gi ...)と意味は思じように思うが。
+(nu'i ge ... nu'u gi ...)と意味は思じように思うが。
 
 terms-gik-terms <- term (gik / terms-gik-terms) term
 
@@ -407,6 +414,10 @@ sumti <- sumti-1 (VUhO-clause free* relative-clauses)?
 
 vu'o はスムティと関係節(句)の結合性を下げる。
 接続詞よりも弱く結合する。
+つまり、
+(mi .e do) vu'o (noi klama lo zarci)
+mi .e (do noi klama lo zarci)
+といった感じ。
 
 sumti-1 <- sumti-2 (joik-ek stag? KE-clause free* sumti KEhE-clause? free*)?
 
@@ -476,9 +487,12 @@ sumti-tail <-
 	(sumti-6 relative-clauses?)? sumti-tail-1 /
 	relative-clauses sumti-tail-1
 
+一行目で、lo mi gerku のような構造を示している。
+()内の relative-clauses は lo (mi ne do) gerku のような構造を示す。
+
 二行目では描写(la, le, lo)内でセルブリの前につく
 関係節(句)が定義されている。
-また、lo mi gerku のような構造が一行目で示されている。
+lo pe mi gerku のような感じ。
 
 sumti-tail-1 <-
 	selbri relative-clauses? /
@@ -569,7 +583,7 @@ selbri-2 <- selbri-3 (CO-clause free* selbri-2)?
 
 co によるタンルの生成。
 ここを見ると co は右結合となっているが、CLL でそういう記述は無かったように思うが、
-mi (gerku zdani) klama (私は犬小屋的に行く)は、
+mi (gerku zdani) klama (私は犬小屋的に行く)を、
 mi klama co (zdani co gerku) とするためには右結合のほうが都合がいい。
 
 selbri-3 <- selbri-4+
