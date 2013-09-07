@@ -755,15 +755,25 @@ mex-2 <- operand / mex-forethought
 mex-forethought <- PEhO-clause? free* operator fore-operands KUhE-clause? free*
 fore-operands <- mex-2+ 
 
+任意の pe'o のついた演算子に複数の数式(mex-2)が続いたもの。
+任意の ku'e で終わる。
+前置式で書かれた数式のなかには(明示的なかっこが無い限り)中置式の数式は
+入らないということが fore-operands <- mex-2+ で表されている。
+
 ;li fu'a reboi ci pi'i voboi mu pi'i su'i reboi ci vu'u su'i du li rexa
 ;rp-expression <- rp-operand rp-operand operator
-;rp-operand <- operand / rp-expression
+;rp-operand <- operand / rp-expression                           ... (2)
 ; AKA (almost; this one allows a single operand; above does not.
-;rp-expression <- rp-expression rp-expression operator / operand
+;rp-expression <- rp-expression rp-expression operator / operand ... (1)
 
 ; Right recursive version.
 rp-expression <- operand rp-expression-tail
-rp-expression-tail <- rp-expression operator rp-expression-tail / ()
+rp-expression-tail <- rp-expression operator rp-expression-tail / () ... (3)
+
+逆ポーランド記法。
+左再帰から右再帰に変換したためわかりにくくなっている。
+(1) -> (2) -> (3) と見ていくとわかりやすい。
+まずは、(1) は (式) (式) (演算子) または (被演算子) という形。
 
 ;; operator <- operator-1 (joik-jek operator-1 / joik stag? KE-clause free* operator KEhE-clause? free*)*
 
