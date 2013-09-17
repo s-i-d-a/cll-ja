@@ -871,7 +871,11 @@ mex-operator <-
 
 operand <- operand-sa* operand-0
 
+sa については ...
+
 operand-0 <- operand-1 (joik-ek stag? KE-clause free* operand KEhE-clause? free*)?
+
+被演算子はタグを前置した ke を取る joik-ek で接続することができる。
 
 operand-sa <- operand-start
 	(!operand-start (sa-word / SA-clause !operand-start) )*
@@ -881,9 +885,15 @@ operand-start <-
 	quantifier / lerfu-word / NIhE-clause / MOhE-clause / JOhI-clause /
 	gek / LAhE-clause / NAhE-clause
 
+sa については ...
+
 operand-1 <- operand-2 (joik-ek operand-2)*
 
+被演算子の接続(ノーマル)。
+
 operand-2 <- operand-3 (joik-ek stag? BO-clause free* operand-2)?
+
+被演算子の接続(bo による結合力の強化)。
 
 operand-3 <-
 	quantifier /
@@ -894,15 +904,28 @@ operand-3 <-
 	gek operand gik operand-3 /
 	(LAhE-clause free* / NAhE-clause BO-clause free*) operand LUhU-clause? free*
 
+被演算子となりうるものの列挙。
+quantifier そのもの(number または vei mex ve'o)。
+レルフ列。ni'e + selbri、mo'e + sumti、jo'i + 複数の数式。
+ge ... gi ... により接続された operand。
+LAhE や NAhE BO をつけた operand。
+
 number <- PA-clause (PA-clause / lerfu-word)*
 
+PA のあとに PA またはレルフが続いたものが number。
+
 lerfu-string <- lerfu-word (PA-clause / lerfu-word)*
+
+lerfu-word のあとに PA が続いたものが lerfu-string。
 
 ; ** BU clauses are part of BY-clause
 lerfu-word <-
 	BY-clause /
 	LAU-clause lerfu-word /
 	TEI-clause lerfu-string FOI-clause
+
+lerf-word は BY-clause (by. や .abu 等) そのものか、
+LAU + レルフまたは、TEI + lerfu-string + FOI。
 
 8. 接続句
 
