@@ -711,6 +711,8 @@ sa については説明しない。
 ;-------------------------------------------------------------------
 ;-- #07 mex
 
+7-1. 数式全体
+
 quantifier と mex の二つがあり、前者は主にスムティの修飾に使われ、
 後者は li によるスムティ化等に使われる。
 
@@ -782,6 +784,8 @@ rp-expression-tail <- rp-expression operator rp-expression-tail / () ... (3)
 (3) は (1) を右再帰の形にしたもの。
 (本来は (2) を右再帰の形にするべき?)
 
+7-2. 演算子
+
 ;; operator <- operator-1 (joik-jek operator-1 / joik stag? KE-clause free* operator KEhE-clause? free*)*
 
 operator <- operator-sa* operator-0
@@ -821,21 +825,34 @@ operator-0 <- operator-1
 	( joik-jek operator-1
 	/ joik stag? KE-clause free* operator KEhE-clause? free*)*
 
+演算子の論理-非論理接続。
+joik のあとの、ke, ke'e でくくられた演算子の前にタグを置くことができる。
+jek のあとにその構造を許さない理由は不明。
+
 operator-sa <-
 	operator-start
 	(!operator-start (sa-word / SA-clause !operator-start) )*
 	SA-clause &operator-0
 
+sa については ...
+
 operator-start <-
 	guhek / KE-clause / SE-clause? NAhE-clause / SE-clause? MAhO-clause /
 	SE-clause? VUhU-clause
+
+sa については ...
 
 operator-1 <-
 	operator-2 /
 	guhek operator-1 gik operator-2 /
 	operator-2 (jek / joik) stag? BO-clause free* operator-1
 
+operator-2 またはそれを論理-非論理接続したもの。
+ge ... gi ... という構造と bo による結合力強化版。
+
 operator-2 <- mex-operator / KE-clause free* operator KEhE-clause? free*
+
+operator-2 は以下で列挙されるものまたは ke, ke'e でくくられた operator。
 
 mex-operator <-
 	SE-clause free* mex-operator /
@@ -843,6 +860,12 @@ mex-operator <-
 	MAhO-clause free* mex TEhU-clause? free* /
 	NAhU-clause free* selbri TEhU-clause? free* /
 	VUhU-clause free*
+
+単一の(つまり接続詞で接続されていない)演算子を列挙。
+複数の SE, NAhE をつけることができることも示される。
+本質的には、ma'o + mex、na'u + selbri または VUhU が演算子となる。
+
+7-3. 被演算子
 
 ;; operand <- operand-1 (joik-ek stag? KE-clause free* operand KEhE-clause? free*)?
 
