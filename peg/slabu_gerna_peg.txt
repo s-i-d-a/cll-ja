@@ -47,7 +47,7 @@ cmavo の列挙部分がその半分を占める。
 さらに、多くの行が sa による打ち消しを実現するために使われている。
 よって実質的に重要なのは全体の 1/3 ほどであると思われる。
 
-今のところ予習は 7. の数式の途中のところまでなので、
+今のところ予習は 7. の数式が終わったところなので、
 それ以降は次回に回すということで。
 
 ; This is a Parsing Expression Grammar for Lojban.
@@ -934,14 +934,24 @@ LAU + レルフまたは、TEI + lerfu-string + FOI。
 
 ek <- NA-clause? SE-clause? A-clause NAI-clause?
 
+A にオプショナルな NA, SE, NAI がついたもの
+
 ;; gihek <- NA-clause? SE-clause? GIhA-clause NAI-clause?
 gihek <- gihek-sa* gihek-1
 
+sa については ...
+
 gihek-1 <- NA-clause? SE-clause? GIhA-clause NAI-clause?
+
+GIhA にオプショナルな NA, SE, NAI がついたもの
 
 gihek-sa <- gihek-1 (!gihek-1 (sa-word / SA-clause !gihek-1 ) )* SA-clause &gihek
 
+sa については ...
+
 jek <- NA-clause? SE-clause? JA-clause NAI-clause?
+
+JA に(同上)
 
 joik <-	SE-clause? JOI-clause NAI-clause? /
 	interval /
@@ -949,21 +959,38 @@ joik <-	SE-clause? JOI-clause NAI-clause? /
 
 interval <- SE-clause? BIhI-clause NAI-clause?
 
+jiok は JOI にオプショナルな SE や NAI がついたもの、
+または、区間を表す BIhI の同じような構造にオプショナルな GAhO がついたもの
+
 ;; joik-ek <- joik free* / ek free*
 joik-ek <- joik-ek-sa* joik-ek-1
 
+sa については ...
+
 joik-ek-1 <- (joik free* / ek free*)
+
+joik または ek
 
 joik-ek-sa <- joik-ek-1 (!joik-ek-1 (sa-word / SA-clause !joik-ek-1 ) )*
 	SA-clause &joik-ek
 
+sa については ...
+
 joik-jek <- joik free* / jek free*
+
+joik または jek
 
 gek <- SE-clause? GA-clause NAI-clause? free* / joik GI-clause free* / stag gik
 
+GA にオプショナルな SE, NAI がついたもの、または joik gi や tag gi という構造
+
 guhek <- SE-clause? GUhA-clause NAI-clause? free*
 
+GUhA にオピショナルな SE, NAI がついたもの。
+
 gik <- GI-clause NAI-clause? free*
+
+gi にオプショナルな NAI がついたもの
 
 9. 時制、法制タグ
 
