@@ -999,22 +999,33 @@ gi にオプショナルな NAI がついたもの
 
 tag <- tense-modal (joik-jek tense-modal)*
 
+タグは joik-jek でつなぐことができる
+
 ;stag <- simple-tense-modal ((jek / joik) simple-tense-modal)*
 stag <-	simple-tense-modal ((jek / joik) simple-tense-modal)* /
 	tense-modal (joik-jek tense-modal)*
 
+tag と stag を分けている理由は不明
+
 tense-modal <-
 	simple-tense-modal free* /
 	FIhO-clause free* selbri FEhU-clause? free*
+
+単純なタグと fi'o selbri がタグである
 
 simple-tense-modal <-
 	NAhE-clause? SE-clause? BAI-clause NAI-clause? KI-clause? /
 	NAhE-clause? (
 		((time space? / space time?) CAhA-clause) /
 		(time space? / space time?) /
-		CAhA-clause ) KI-clause? /
+		CAhA-clause
+	 ) KI-clause? /
 	KI-clause /
 	CUhE-clause
+
+単純なタグは BAI にオプショナルな NAhE, SE, NAI, KI のついたもの、
+または、時や場所と CAhA のどちらかまたは両方に NAhE, KI のついたもの、
+KI そのもの、または CUhE である
 
 time <-	ZI-clause time-offset*
 		(ZEhA-clause (PU-clause NAI-clause?)?)? interval-property* /
@@ -1025,7 +1036,13 @@ time <-	ZI-clause time-offset*
 	ZI-clause? time-offset*
 		(ZEhA-clause (PU-clause NAI-clause?)?)? interval-property+
 
+これは本当は単純だが形式的に書くために複雑になっている。
+ZI-clause, time-offset, ZEhA-clause (PU-clause NAI-clause?)?,
+interval-property の四者がすくなくともどれかひとつは存在する必要があるということ
+
 time-offset <- PU-clause NAI-clause? ZI-clause?
+
+PU のあとにオプショナルな NAI や ZI がくる
 
 space <-
 	VA-clause space-offset* space-interval? (MOhI-clause space-offset)? /
@@ -1033,7 +1050,13 @@ space <-
 	VA-clause? space-offset* space-interval (MOhI-clause space-offset)? /
 	VA-clause? space-offset* space-interval? MOhI-clause space-offset
 
+これも同上。
+VA-clause, space-offset, space-interval, MOhI-clause space-offset
+の四者のすくなくともどれかひとつは存在する必要があるということ
+
 space-offset <- FAhA-clause NAI-clause? VA-clause?
+
+FAhA にオプショナルな NAI や VA がついたもの
 
 space-interval <-
 	(VEhA-clause / VIhA-clause / VEhA-clause VIhA-clause)
@@ -1042,12 +1065,20 @@ space-interval <-
 		(FAhA-clause NAI-clause?)? /
 	space-int-props
 
+これも同上。
+VEhA / VIhA / VEhA VIhA または space-int-props のどちらかが必ず存在する。
+前者の後ろにはオプショナルな (オプショナルな NAI もつく) FAhA がつく
+
 space-int-props <- (FEhE-clause interval-property)+
+
+FEhE がついた interval-property
 
 interval-property <-
 	number ROI-clause NAI-clause? /
 	TAhE-clause NAI-clause? /
 	ZAhO-clause NAI-clause?
+
+数 ROI (NAI)、TAhE (NAI)、ZAhO (NAI)
 
 10. 自由修飾句
 
