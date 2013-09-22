@@ -47,9 +47,6 @@ cmavo の列挙部分がその半分を占める。
 さらに、多くの行が sa による打ち消しを実現するために使われている。
 よって実質的に重要なのは全体の 1/3 ほどであると思われる。
 
-今のところ予習は 7. の数式が終わったところなので、
-それ以降は次回に回すということで。
-
 ; This is a Parsing Expression Grammar for Lojban.
 ; See http://www.pdos.lcs.mit.edu/~baford/packrat/
 ; 
@@ -1129,6 +1126,10 @@ BU が続いた場合は indicator とはならない。
 ;-- #0b Magic words
 
 zei-clause <- pre-clause zei-clause-no-pre
+
+pre-clause とは BAhE。
+つまり、BAhE のついたもの
+
 zei-clause-no-pre <- pre-zei-bu (zei-tail? bu-tail)* zei-tail post-clause
 
 sa がある場合のルール。
@@ -1143,6 +1144,9 @@ pre-zei-bu-no-SA はいわば「普通の語」。
 による構造であるということを示す。
 
 bu-clause <- pre-clause bu-clause-no-pre
+
+BAhE のついたもの
+
 bu-clause-no-pre <- pre-zei-bu (bu-tail? zei-tail)* bu-tail post-clause
 
 同上
@@ -1196,7 +1200,11 @@ fa'o の後には何が来ても無視するというルールのための定義
 ; Handling of what can go after a cmavo
 post-clause <- spaces? si-clause? !ZEI-clause !BU-clause indicators*
 
+単語の後ろには空白、si による打ち消し、が来て複数の指標が来る。
+
 pre-clause <- BAhE-clause?
+
+単語の前には BAhE が来る。
 
 ;any-word-SA-handling <-
 ;	BRIVLA-pre / known-cmavo-SA / !known-cmavo-pre CMAVO-pre / CMENE-pre
@@ -1222,6 +1230,8 @@ known-cmavo-SA <-
 	VUhO-pre / VUhU-pre / XI-pre / ZAhO-pre / ZEI-pre / ZEhA-pre / ZI-pre /
 	ZIhE-pre / ZO-pre / ZOI-pre / ZOhU-pre
 
+sa については省略
+
 13. 空白として扱われる構造
 
 ;-------------------------------------------------------------------
@@ -1233,17 +1243,25 @@ known-cmavo-SA <-
 ; SU clauses
 su-clause <- (erasable-clause / su-word)* SU-clause
 
+su による打ち消し
+
 ; Handling of SI and interactions with zo and lo'u...le'u
 
 si-clause <- ((erasable-clause / si-word / SA-clause) si-clause? SI-clause)+
+
+si による打ち消し
 
 erasable-clause <-
 	bu-clause-no-pre !ZEI-clause !BU-clause /
 	zei-clause-no-pre !ZEI-clause !BU-clause
 
+BU や ZEI によって作られる構造は一語として打ち消される。
+
 sa-word <- pre-zei-bu
 
 si-word <- pre-zei-bu
+
+いわゆる一語。
 
 su-word <- !NIhO-clause !LU-clause !TUhE-clause !TO-clause !SU-clause
 	!FAhO-clause any-word-SA-handling
@@ -1253,6 +1271,7 @@ su-word <- !NIhO-clause !LU-clause !TUhE-clause !TO-clause !SU-clause
 	つけたものを扱う。
 	本来字句解析で扱うべきものなのかもしれない。
 	それをむりやり構文解析で扱っているため文法が肥大している。
+	ここは説明を省略する。
 
 ;-------------------------------------------------------------------
 ;-- #0e SELMAHO
@@ -2038,6 +2057,7 @@ ZOhU-no-SA-handling <- pre-clause ZOhU post-clause
 	yacc では扱わなかった字句解析に含まれる部分
 	cmene は子音で終わる、とか brivla は二重子音を含むとか
 	そういう話
+	#11 の cmene から見ていく
 
 ;-------------------------------------------------------------------
 ;--- MORPHOLOGY ---
@@ -2110,6 +2130,8 @@ lojban-word <- cmene / cmavo / brivla
 cmene <- !h &consonant-final coda? (any-syllable / digit)* &pause
 consonant-final <- (non-space &non-space)* consonant &pause
 
+複数の音節や数字のつながりで、子音で終わるもの
+
 ;cmene <- !h cmene-syllable* &consonant coda? consonantal-syllable* onset &pause
 ;cmene-syllable <- !doi-la-lai-lahi coda? consonantal-syllable* onset nucleus / digit
 ;doi-la-lai-lahi <- (d o i / l a (h? i)?) !h !nucleus
@@ -2123,58 +2145,107 @@ CVCy-lujvo <-
 	stressed-CVC-rafsi y short-final-rafsi
 cmavo-form <-
 	!h !cluster onset (nucleus h)* (!stressed nucleus / nucleus !cluster) /
-	y+ / digit
+	y+ /
+	digit
+
+onset は音節のはじまり。
+nucleus は音節の核、つまり母音または l, r, m, n。
+
 
 ;-------------------------------------------------------------------
 ;-- #13 brivla
 
 brivla <- !cmavo initial-rafsi* brivla-core
 
+brivla-core に initial-rafsi を 0 を含む任意の数つけたもの
+
 brivla-core <-
 	fuhivla / gismu / CVV-final-rafsi /
 	stressed-initial-rafsi short-final-rafsi
 
+brivla-core は fuhivla または gismu に ...
+
 stressed-initial-rafsi <-
 	stressed-extended-rafsi / stressed-y-rafsi / stressed-y-less-rafsi
 
+いろいろなラフシの強勢のある版
+
 initial-rafsi <- extended-rafsi / y-rafsi / !any-extended-rafsi y-less-rafsi
+
+いろいろなラフシの強勢のない版
 
 ;-------------------------------------------------------------------
 ;-- #14 fuhivla
 
 any-extended-rafsi <- fuhivla / extended-rafsi / stressed-extended-rafsi
 
+fuhivla または extended-rafsi または その強勢版。
+
 fuhivla <- fuhivla-head stressed-syllable consonantal-syllable* final-syllable
+
+fuhivla-head に強勢のある音節が続き、オプショナルな子音による音節が続き、
+終わりの音節が続くもの
 
 stressed-extended-rafsi <- stressed-brivla-rafsi / stressed-fuhivla-rafsi
 
+下の強勢版
+
 extended-rafsi <- brivla-rafsi / fuhivla-rafsi
+
+brivla-rafsi または fuhivla-rafsi
 
 stressed-brivla-rafsi <- &unstressed-syllable brivla-head stressed-syllable h y
 
+brivla-head に強勢のある音節が続いたもの
+
 brivla-rafsi <- &(syllable consonantal-syllable* syllable) brivla-head h y h?
+
+brivla-head に h y のついたもの
 
 stressed-fuhivla-rafsi <- fuhivla-head stressed-syllable &consonant onset y
 
+fuhivla-head に強勢のある音節が続き子音ではじまる音節に y がついたもの
+
 fuhivla-rafsi <- &unstressed-syllable fuhivla-head &consonant onset y h?
+
+fuhivla-head に子音ではじまる音節のはじまりに y がついたもの
 
 fuhivla-head <- !rafsi-string brivla-head
 
+ラフシのつながりではない brivla-head
+
 brivla-head <- !cmavo !slinkuhi !h &onset unstressed-syllable*
 
+slinku'i テストを通る強勢のない音節の連続。
+また onset の条件も満たす必要がある。
+
 slinkuhi <- consonant rafsi-string
+
+slinku'i テストで無効な fu'ivla をチェックする。
+rafsi-string の前に子音がついた形は駄目なようだ。
 
 rafsi-string <- y-less-rafsi*
 	(gismu / CVV-final-rafsi / stressed-y-less-rafsi short-final-rafsi /
 		y-rafsi / stressed-y-rafsi / stressed-y-less-rafsi? initial-pair y)
 
+y-less-rafsi の後にいろいろな rafsi が続いたもの。
+
 ;-------------------------------------------------------------------
 ;-- #15 gismu
 
 gismu <- stressed-long-rafsi &final-syllable vowel &post-word
+
+強勢のある四文字ラフシに音節の終わりである母音がついたものが gismu
+
 CVV-final-rafsi <- consonant stressed-vowel h &final-syllable vowel &post-word
+
+単語の最後の音節である母音の前に、子音 - 強勢のある母音 - h がついたもの。
+つまり、CV'V の形。
+
 short-final-rafsi <-
 	&final-syllable (consonant diphthong / initial-pair vowel) &post-word
+
+単語の最後の音節であり CVV または CCV の形のラフシ
 
 stressed-y-rafsi <- (stressed-long-rafsi / stressed-CVC-rafsi) y
 stressed-y-less-rafsi <-
@@ -2185,48 +2256,106 @@ stressed-CCV-rafsi <- initial-pair stressed-vowel
 stressed-CVV-rafsi <- consonant
 	(unstressed-vowel h stressed-vowel / stressed-diphthong) r-hyphen?
 
+以上は下で定義するものの強勢版。
+下で説明する。
+
 y-rafsi <- (long-rafsi / CVC-rafsi) y h?
+
+y つきのラフシ
+
 y-less-rafsi <-
 	!y-rafsi (CVC-rafsi !y / CCV-rafsi / CVV-rafsi) !any-extended-rafsi
+
+y なしのラフシ
+
 long-rafsi <- (CCV-rafsi / CVC-rafsi) consonant
+
+四文字ラフシの定義
+
 CVC-rafsi <- consonant unstressed-vowel consonant
 CCV-rafsi <- initial-pair unstressed-vowel
 CVV-rafsi <- consonant
 	(unstressed-vowel h unstressed-vowel / unstressed-diphthong) r-hyphen?
 
+三文字ラフシの定義
+
 r-hyphen <- r &consonant / n &r
+
+子音の前の r または r の前の n
 
 ;-------------------------------------------------------------------
 ;-- #16 syllable
 
+音節
+
 final-syllable <- onset !y !stressed nucleus !cmene &post-word
+
+最後の音節
 
 stressed-syllable <- &stressed syllable / syllable &stress
 stressed-diphthong <- &stressed diphthong / diphthong &stress
 stressed-vowel <- &stressed vowel / vowel &stress
 
+強勢のある音節
+
 unstressed-syllable <- !stressed syllable !stress / consonantal-syllable
 unstressed-diphthong <- !stressed diphthong !stress
 unstressed-vowel <- !stressed vowel !stress
 
+強勢のない音節
+
 stress <- consonant* y? syllable pause
+
+pause の前にひとつ音節が来てその前に y や子音が来ている。
+stress という名前は、その前の音節に強勢が来ることを示す。
+
 stressed <- onset comma* [AEIOU]
 
+大文字は強勢
+
 any-syllable <- onset nucleus coda? / consonantal-syllable
+
+母音または l, m, n, r によって作られる音節
+
 syllable <- onset !y nucleus coda?
+
+母音による音節
+
 consonantal-syllable <- consonant syllabic &(consonantal-syllable / onset)
 	(consonant &spaces)?
 
+母音の代わりに l, m, n, r が来る音節。
+
 coda <- !any-syllable consonant &any-syllable / syllabic? consonant? &pause
+
+それ自体は後の音と音節を構成しない、音節が後に続く子音。
+または子音の後に pause が来るもの。
+つまり、音節の最後に来る子音ということ。
+
 onset <- h / consonant? glide / initial
+
+h、オプショナルな子音 + 半母音、または、単語の頭に来られる子音
+
 nucleus <- vowel / diphthong / y !nucleus
+
+音節の核(母音または二重母音)
 
 ;-----------------------------------------------------------------
 ;-- #17 vowel
 
+母音
+
 glide <- (i / u) &nucleus !glide
+
+半母音(glide は「わたり」とも訳す)
+
 diphthong <- (a i / a u / e i / o i) !nucleus !glide
+
+二重母音
+
 vowel <- (a / e / i / o / u) !nucleus
+
+単母音
 
 a <- comma* [aA]
 e <- comma* [eE]
@@ -2238,22 +2367,40 @@ y <- comma* [yY]
 ;-------------------------------------------------------------------
 ;-- #18 consonant
 
+子音
+
 cluster <- consonant consonant+
+
+多重子音。
 
 initial-pair <- &initial consonant consonant !consonant
 
+下の条件を満たす二重子音。
+
 initial <- (affricate / sibilant? other? liquid?) !consonant !glide
 
+単語の頭に来られる子音の条件。
+破擦音、またはオプショナルな歯擦音、その他、流音がこの順に来る。
+その音には子音は続かない。
+また半母音(ia, ii, iu, ie, io や ua, uo)も来ない。
+glide は「わたり」と訳すのかな?半母音のこと。
+
 affricate <- t c / t s / d j / d z
+
+破擦音
 
 liquid <- l / r
 other <- p / t !l / k / f / x / b / d !l / g / v / m / n !liquid
 sibilant <- c / s !x / (j / z) !n !liquid
 
+子音の分類1
+
 consonant <- voiced / unvoiced / syllabic
 syllabic <- l / m / n / r
 voiced <- b / d / g / j / v / z
 unvoiced <- c / f / k / p / s / t / x
+
+子音の分類2
 
 l <- comma* [lL] !h !l
 m <- comma* [mM] !h !m !z
@@ -2274,14 +2421,22 @@ p <- comma* [pP] !h !p !voiced
 t <- comma* [tT] !h !t !voiced
 h <- comma* ['h] &nucleus
 
+それぞれの文字(または発音)の定義、後に来られないものも定義
+
 ;-------------------------------------------------------------------
 ;-- #19 other chars
 
 digit <- comma* [0123456789] !h !nucleus
 
+数字の定義
+
 post-word <- pause / !nucleus lojban-word
 
+pause または nucleus ではない lojban-word が語の後に来る。
+
 pause <- comma* space-char / EOF
+
+オプショナルな複数のコンマに空白文字が続いたものが pause
 
 EOF <- comma* !.
 
@@ -2291,6 +2446,8 @@ non-lojban-word <- !lojban-word non-space+
 
 non-space <- !space-char .
 
+空白文字以外
+
 ;Unicode-style and escaped chars not compatible with cl-peg
 ; space-char <- [.\t\n\r?!\u0020]
 
@@ -2298,16 +2455,28 @@ space-char <- [.?! ] / space-char1 / space-char2
 space-char1 <- '	'
 space-char2 <- ''
 
+空白文字の定義
+
 ;-------------------------------------------------------------------
 ; #1a Spaces, LUJVO
 
 spaces <- !Y initial-spaces
 
+.y 以外の空白
+
 initial-spaces <- (comma* space-char / !ybu Y)+ EOF? / EOF
+
+コンマと空白文字、.y や入力の終わりが空白
 
 ybu <- Y space-char* BU
 
+ybu は特別に定義しておかないと .y が空白として扱われてしまう。
+
 lujvo <- !gismu !fuhivla brivla
+
+lujvo は gismu でも fuhivla でもない brivla
+
+以下 CMAVO の列挙なので説明しない。
 
 ;-------------------------------------------------------------------
 ; #1b CMAVO
