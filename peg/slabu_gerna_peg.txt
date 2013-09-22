@@ -1096,20 +1096,32 @@ free <-
 	TO-clause text TOI-clause? /
 	xi-clause
 
+sei、soi による挿入、vocative + selbri、vocative + cmene、vocative + sumti、
+(数, 文字列) + MAI、to による挿入、xi による添字付け。
+
 xi-clause <-
 	XI-clause free* (number / lerfu-string) BOI-clause? /
 	XI-clause free* VEI-clause free* mex VEhO-clause?
+
+xi + (数, 文字列) または xi + mex
 
 vocative <-
 	(COI-clause NAI-clause?)+ DOI-clause /
 	(COI-clause NAI-clause?) (COI-clause NAI-clause?)* /
 	DOI-clause
 
+vocative はひとつ以上の COI または、ひとつの DOI またはその両方
+
 indicators <- FUhE-clause? indicator+
+
+任意の fu'e のあとに下で定義する indicator がひとつ以上続いたもの
 
 indicator <-
 	((UI-clause / CAI-clause) NAI-clause? / DAhO-clause / FUhO-clause)
 	!BU-clause
+
+UI, CAI に任意の NAI が続いたもの、DAhO、または FUhO が続いたもの。
+BU が続いた場合は indicator とはならない。
 
 11. マジックワード (zei による複合単語や bu による文字を表す単語)
 
@@ -1118,24 +1130,59 @@ indicator <-
 
 zei-clause <- pre-clause zei-clause-no-pre
 zei-clause-no-pre <- pre-zei-bu (zei-tail? bu-tail)* zei-tail post-clause
+
+sa がある場合のルール。
+
 zei-clause-no-SA <- pre-zei-bu-no-SA (zei-tail? bu-tail)* zei-tail
+
+こっちは sa が無かった場合には「簡単に書けますよ」という例だと思う。
+こっちを説明する。
+pre-zei-bu-no-SA はいわば「普通の語」。
+(zei-tail? bu-tail) の部分は zei zo'e zei zo'e bu という形。
+途中に bu が来ても最終的に zei zo'e となれば全体としては zei
+による構造であるということを示す。
 
 bu-clause <- pre-clause bu-clause-no-pre
 bu-clause-no-pre <- pre-zei-bu (bu-tail? zei-tail)* bu-tail post-clause
+
+同上
+
 bu-clause-no-SA <- pre-zei-bu-no-SA (bu-tail? zei-tail)* bu-tail
 
+同上
+(bu-tail? zei-tail) の部分は bu zei zo'e zei zo'e という構造。
+途中に zei が来ても最終的に bu が来れば全体としては bu
+による構造であることを示す。
+
 zei-tail <- (ZEI-clause any-word)+
+
+ひとつ以上の (zei + 語)
+
 bu-tail <- BU-clause+
+
+複数の bu
 
 pre-zei-bu <-
 	(!BU-clause !ZEI-clause !SI-clause !SA-clause !SU-clause !FAhO-clause
 		any-word-SA-handling) si-clause?
 ; LOhU-pre / ZO-pre / ZOI-pre / !ZEI-clause !BU-clause !FAhO-clause !SI-clause !SA-clause !SU-clause any-word-SA-handling si-clause?
+
+sa がある場合のバージョン。
+説明は下の sa 無しバージョンで。
+
 pre-zei-bu-no-SA <- LOhU-pre / ZO-pre / ZOI-pre /
 	!ZEI-clause !BU-clause !FAhO-clause !SI-clause !SA-clause !SU-clause
 		any-word si-clause?
 
+lo'u, zo, zoi はそれぞれ独自の、一語として数えられる構文を構成するので、
+特別扱いが必要。
+それ以外のものはほとんどのものがそのまま一語として pre-zei-bu となれる。
+si-clause は複数の(語, si)のペア。
+zei, bu, fa'o, si, sa, su は zei や bu の対象にはなれない。
+
 dot-star <- .*
+
+fa'o の後には何が来ても無視するというルールのための定義
 
 12. BAhE や UI 等の単語の前後にくっつけるもの
 
