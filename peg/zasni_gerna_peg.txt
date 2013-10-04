@@ -1,3 +1,6 @@
+lojbanのxorxesによる暫定案に日本語解説を追加。
+文責: 重城良国
+
 This is a version (not official) of the full grammar of Lojban.
 I intend to make many changes to it, some cosmetic, some not.
 Don't take the contents of this page too seriously for now.
@@ -6,58 +9,163 @@ I will try to keep a record of the changes as I make them. mi'e ((xorxes))
 
 http://www.lojban.org/tiki/zasni+gerna
 
+全体の構造
+
+A. 文法
+1. 文章、段落、記述(文よりも大きなまとまり)
+2. 文やブリディ
+3. 項、スムティ
+4. 数式(空)
+5. 関係節、関係句
+6. セルブリ、タンル単位
+7. 付加引数(be ... bei ... be'o)
+8. 接続句
+9. 時制、法制タグ
+10. 自由修飾句
+
+B. 低レベルの文法
+11. 単語の前後にpre, postをつけたもの
+12. zeiやbuによる構造
+13. pre, postの定義
+14. 打ち消し、bu, zei、引用
+
+C. 単語(セルマホの定義等)
+
+D. 形態論
+
 ; ****** GRAMMAR ****** 
+
+1. 文章、段落、記述(文よりも大きなまとまり)
 
 text <- words-SU* SI-tail* post paragraphs FAhO#? 
 
+; suによる打ち消し、siによる打ち消し、の後に自由修飾句が来て、
+; そのあとに段落が来て、オプショナルなFAhOが続く。
+; word-SIではなくSI-tailである理由は余分なsiを許容するということ。
+;
+; .i mi klama si si si si si si .i do prami mi
+;
+; のようなことができる。
+
 paragraphs <- paragraph (NIhO# paragraph)* 
+
+; 段落は ni'o によってつなげる
 
 paragraph <- statement (I# statement)* 
 
+; 段落は .i によってつなげられた記述
+
 statement <- statement-1 (I# joik statement-1)* 
+
+; .i + joikは単なる.iより強く結合する
 
 statement-1 <- sentence (I# joik? tag? BO# sentence)* 
 
-sentence <- (term  CU#?)? bridi-tail / TUhE# paragraphs TUhU#?
-	/ gek sentence GI# sentence / term  ZOhU# sentence / term* VAU#? 
+; .iboは.i + joikよりも強く結合する
+; boの前にはtagを置くことができる
+
+2. 文やブリディ
+
+sentence <- (term+ CU#?)? bridi-tail / TUhE# paragraphs TUhU#?
+	/ gek sentence GI# sentence / term+ ZOhU# sentence / term* VAU#? 
+
+; 基本的にはtermが複数来てcuが来てbridi-tailが来るという形
+; 残りは、tu'e ... tu'uによるグループ化、ge ... gi ... による接続、
+; ... zo'u ...による構造、そしてtermのみから成る文
 
 bridi-tail <- bridi-tail-1 (gihek bridi-tail-1 term* VAU#?)* 
 
+; gihekによるbridi-tailの接続
+
 bridi-tail-1 <- bridi-tail-2 (gihek tag? BO# bridi-tail-2 term* VAU#?)* 
+
+; boによる結合力強化版、boの前にはtagが置ける
 
 bridi-tail-2 <- selbri term* VAU#?
 	/ (tag / NA#)* gek bridi-tail GI# bridi-tail term* VAU#? 
 
+; 基本はセルブリの後に項が来てvauで終わる
+; またはge ... gi ...によるブリディ末端の接続
+; geの前にはtagやnaが複数置ける
+
+3. 項、スムティ
+
 term <- FA#? sumti / tag? sumti / FA# KU#? / tag KU#? / NA# KU#?
-	/ gek term  VAU#? GI# term  VAU#? 
+	/ gek term+ VAU#? GI# term+ VAU#? 
+
+; FA スムティ、オプショナルなタグ + スムティ、FA ku、タグ ku、na ku
+; それとge 項 ... gi 項 ...という形
+;
+; FA ku の構造は新しいように思う
+; また ge ... gi ... はオプショナルなvauで終了させることができる
 
 sumti <- sumti-1 (joik sumti-1)* (VUhO# rels)? 
 
+; スムティはjoikで接続でき、それ全体に関係節をつけるにはvu'oが必要
+
 sumti-1 <- sumti-2 (joik tag? BO# sumti-2)* 
+
+; boがつくと結合力が強まる。boの前にはタグが置ける
 
 sumti-2 <- quantifier? bare-sumti / quantifier selbri KU#? rels?
 	/ gek sumti GI# sumti 
 
+; スムティには数量詞をつけることができる
+; また数量詞 + セルブリでスムティとなる
+; ge ... gi ... でスムティを接続した全体もスムティとなる
+
 bare-sumti <- (description / LI# mex LOhO#? / ZO-word# / LU# paragraphs LIhU#?
-	/ LOhU-words-LEhU# / ZOI-anything# / KOhA# / !tag !selbri lerfu  BOI#?
+	/ LOhU-words-LEhU# / ZOI-anything# / KOhA# / !tag !selbri lerfu+ BOI#?
 	/ !tag !selbri (LAhE# / NAhE# BO#) rels? sumti LUhU#?) rels?
+
+; スムティの列挙。すべてに関係節がつけられる
+; 描写、数、引用(zo, lu ... li'u, lo'u ... le'u, zoi ...)、代スムティ(KOhA)、
+; 文字列、la'e / na'e bo スムティ lu'u がある。
 
 description <- LE# (rels / bare-sumti)? quantifier? (selbri / bare-sumti) KU#? 
 
+; 描写スムティはlo (関係節/スムティ) 数量詞 (セルブリ/スムティ) ku
+; という形。
+; cmeneがselbriとなるため文法が簡略化された。
+; 表現力も上がるし、いいことずくめだと思う。
+
+4. 数式
+
 quantifier <- !bare-sumti !selbri mex rels? 
+
+; quantifierはほぼmexと同じだが、関係節が取れる。
+; quantifierに関係節がつく構造については聞いたことがないな。
 
 mex <- mex-1 (joik mex-1)* 
 
-mex-1 <- PA#  BOI#? / lerfu  BOI#? / NIhE# selbri TEhU#? / VEI# mex VEhO#?
+; mexはjoikで接続できる。
+; ここ、すごい!
+; 演算子をJOIに入れたことでいろいろなところが簡潔になっている気がする
+;
+; 前置形式とか後置形式はどうなったのかな?
+; 廃止ということかな。
+; 表現できる範囲は ge'a を使えば同じなので、いいのだろう。
+
+mex-1 <- PA#+ BOI#? / lerfu+ BOI#? / NIhE# selbri TEhU#? / VEI# mex VEhO#?
 	/ (LAhE# / NAhE# BO#) mex LUhU#? 
 
+; mexは数または文字の並び、ni'e + セルブリ、vei mex ve'o、
+; (la'e/na'e bo) mex
+;
+; 特記すべきはla'eやna'e boでmexを修飾できること
+; ただこの定義だと文字と数を混ぜることはできない
+
 lerfu <- BY# / word-BU# 
+
+5. 関係節、関係句
 
 rels <- rel (ZIhE# rel)* 
 
 rel <- GOI# term GEhU#? / NOI# sentence KUhO#? 
 
-selbri <- selbri-1  (CO# selbri-1)* rels? (CEI# selbri)? / tag selbri / NA# selbri
+6. セルブリ、タンル単位
+
+selbri <- selbri-1+ (CO# selbri-1)* rels? (CEI# selbri)? / tag selbri / NA# selbri
 
 selbri-1 <- selbri-2 (joik selbri-2)* 
 
@@ -71,22 +179,34 @@ tanru-unit-1 <- BRIVLA# / word-ZEI-word# / CMEVLA# / GOhA# / mex MOI#
 	/ ME# (sumti / mex / joik) MEhU#? MOI#? / NU# sentence KEI#?
 	/ KE# selbri KEhE#? / (SE# / JAI# tag? / NAhE#) tanru-unit-1 
 
+7. 付加引数(be ... bei ... be'o)
+
 linkargs <- BE# term (BEI# term)* BEhO#? 
+
+8. 接続句
 
 joik <- NA#? SE#? JOI# 
 
 gihek <- NA#? SE#? GIhA# 
 
-gek <- SE#? GA# / SE#? JOI# GI# / tag-unit  (joik tag-unit )* GI# 
+gek <- SE#? GA# / SE#? JOI# GI# / tag-unit+ (joik tag-unit+)* GI# 
 
-tag <- tag-unit  (joik tag-unit )* !GI# 
+9. 時制、法制タグ
+
+tag <- tag-unit+ (joik tag-unit+)* !GI# 
 
 tag-unit <- BAI# / mex ROI# / FIhO# selbri FEhU# / (NAhE# / SE#) tag-unit 
 
-free <- UI# / XI# mex-1 / mex-1 MAI# / SEI# (term  CU#?)? selbri SEhU#?
+10. 自由修飾句
+
+free <- UI# / XI# mex-1 / mex-1 MAI# / SEI# (term+ CU#?)? selbri SEhU#?
 	/ TO# paragraphs TOI#? / vocative 
 
-vocative <- (COI#  DOI#? / DOI#) (rels? selbri / sumti?) DOhU#? 
+vocative <- (COI#+ DOI#? / DOI#) (rels? selbri / sumti?) DOhU#? 
+
+B. 低レベルの文法
+
+11. 単語の前後にBAhEやUI等をつけたもの
 
 ; --- SELMAhO --- 
 
@@ -232,6 +352,8 @@ ZIhE# <- pre ZIhE post
 
 ZOhU# <- pre ZOhU post 
 
+12. zeiやbuによる構造
+
 ; --- Pseudo SELMAHO --- 
 
 word-ZEI-word# <- pre word-ZEI-word post 
@@ -243,6 +365,8 @@ ZO-word# <- pre ZO-word post
 LOhU-words-LEhU# <- pre LOhU-words-LEhU post 
 
 ZOI-anything# <- pre ZOI-anything post 
+
+13. 単語の前後にくっつけるもの
 
 ; --- Word Modifiers --- 
 
@@ -256,6 +380,10 @@ lerfu-post <- !BU-tail !ZEI-tail (!lerfu free)?
 
 vocative-post <- !BU-tail !ZEI-tail (!vocative free)? 
 
+14. 打ち消し、bu, zei、引用
+
+... マジックワード
+
 ; ****** MAGIC WORD CONSTRUCTS ****** 
 
 ; (ZOI-delimiters not fully implemented here.) 
@@ -267,10 +395,10 @@ word-SI <- (word-ZEI-word / word-BU / ZO-word / LOhU-words-LEhU / ZOI-anything
 	/ any-word) SI-tail 
 
 word-BU <- (ZO-word / LOhU-words-LEhU / ZOI-anything / any-word)
-	(BU-tail* ZEI-tail )* BU-tail  
+	(BU-tail* ZEI-tail+)* BU-tail+ 
 
 word-ZEI-word <- (ZO-word / LOhU-words-LEhU / ZOI-anything / any-word)
-	(ZEI-tail* BU-tail )* ZEI-tail  
+	(ZEI-tail* BU-tail+)* ZEI-tail+ 
 
 SU-tail <- word-SI* SU 
 
@@ -286,9 +414,11 @@ LOhU-words-LEhU <- LOhU (!LEhU any-word)* LEhU?
 
 ZOI-anything <- ZOI FAhO (!FAhO anything)* FAhO? 
 
+C. 単語(セルマホの定義等)
+
 ; ****** WORDS ****** 
 
-anything <- Y* non-space  
+anything <- Y* non-space+ 
 
 any-word <- CMEVLA / BRIVLA / CMAVO 
 
@@ -509,11 +639,13 @@ ZOI <- Y* &cmavo ( z o i / l a h o ) &post-cmavo
 
 ZOhU <- Y* &cmavo ( z o h u ) &post-cmavo 
 
+D. 形態論
+
 ; ****** MORPHOLOGY ****** 
 
 cmevla <- jbocme / zifcme 
 
-jbocme <- &zifcme (onset nucleus coda?)  &space 
+jbocme <- &zifcme (onset nucleus coda?)+ &space 
 
 zifcme <- !h (V / VV / y / I / h / C !space)* C &space 
 
@@ -526,7 +658,7 @@ post-cmavo <- space / cmavo / brivla
 
 brivla <- gismu / !h fuhivla / type-3-fuhivla / lujvo 
 
-lujvo <- !cmavo !h initial-rafsi  (final-rafsi / gismu / fuhivla / type-3-fuhivla) 
+lujvo <- !cmavo !h initial-rafsi+ (final-rafsi / gismu / fuhivla / type-3-fuhivla) 
 
 type-3-fuhivla <- !cmevla classifier syllable  &space 
 
@@ -539,11 +671,11 @@ final-rafsi <- !cmevla short-rafsi &space
 initial-rafsi <- y-less-rafsi / y-rafsi / fuhivla-rafsi / type-3-rafsi
 	/ brivla-rafsi 
 
-brivla-rafsi <- !cmavo !slinkuhi syllable syllable  h y 
+brivla-rafsi <- !cmavo !slinkuhi syllable syllable+ h y 
 
 type-3-rafsi <- classifier syllable* onset y 
 
-fuhivla-rafsi <- !cmavo !rafsi-string !slinkuhi syllable  onset y 
+fuhivla-rafsi <- !cmavo !rafsi-string !slinkuhi syllable+ onset y 
 
 slinkuhi <- C rafsi-string 
 
@@ -644,7 +776,7 @@ u <- "u"
 
 y <- "y" !nucleus 
 
-Y <- "y"  !nucleus / space 
+Y <- "y"+ !nucleus / space 
 
 non-space <- !space . 
 
