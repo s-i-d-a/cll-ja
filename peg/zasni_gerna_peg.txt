@@ -8,6 +8,7 @@ In ((zasni gerna cenba vreji))
 I will try to keep a record of the changes as I make them. mi'e ((xorxes))
 
 http://www.lojban.org/tiki/zasni+gerna
+http://www.lojban.org/tiki/zasni+gerna+cenva+vreji
 
 全体の構造
 
@@ -25,9 +26,8 @@ A. 文法
 
 B. 低レベルの文法
 11. 単語の前後にpre, postをつけたもの
-12. zeiやbuによる構造
-13. pre, postの定義
-14. 打ち消し、bu, zei、引用
+12. pre, postの定義
+13. 打ち消し、bu, zei、引用
 
 C. 単語(セルマホの定義等)
 
@@ -257,6 +257,9 @@ B. 低レベルの文法
 
 11. 単語の前後にBAhEやUI等をつけたもの
 
+ここはほぼ単語の前語にpreとpostをつけただけなので省略する
+12. へ
+
 ; --- SELMAhO --- 
 
 COI# <- pre COI vocative-post 
@@ -401,8 +404,6 @@ ZIhE# <- pre ZIhE post
 
 ZOhU# <- pre ZOhU post 
 
-12. zeiやbuによる構造
-
 ; --- Pseudo SELMAHO --- 
 
 word-ZEI-word# <- pre word-ZEI-word post 
@@ -415,23 +416,32 @@ LOhU-words-LEhU# <- pre LOhU-words-LEhU post
 
 ZOI-anything# <- pre ZOI-anything post 
 
-13. 単語の前後にくっつけるもの
+12. 単語の前後にくっつけるもの
 
 ; --- Word Modifiers --- 
 
 pre <- (word-SI* BAhE)* word-SI* 
 
+; ほぼBAhE。siによる打ち消しを処理
+
 post <- !BU-tail !ZEI-tail free? 
+
+; ほぼ自由修飾句
+; buやzeiによる構造のほうが優先される
 
 number-post <- !BU-tail !ZEI-tail (!PA# free)? 
 
+; 上記でPAではじまらないということ
+
 lerfu-post <- !BU-tail !ZEI-tail (!lerfu free)? 
+
+; 上記でlerfuではじまらないということ
 
 vocative-post <- !BU-tail !ZEI-tail (!vocative free)? 
 
-14. 打ち消し、bu, zei、引用
+; 上記でvocativeではじまらないということ
 
-... マジックワード
+13. 打ち消し、bu, zei、引用
 
 ; ****** MAGIC WORD CONSTRUCTS ****** 
 
@@ -440,30 +450,68 @@ vocative-post <- !BU-tail !ZEI-tail (!vocative free)?
 words-SU <- (word-ZEI-word / word-BU / ZO-word / LOhU-words-LEhU / ZOI-anything
 	/ !SU any-word)* SU-tail 
 
+; suによる打ち消し
+; zei, bu, zo, lo'u ... le'u, zoi のなかにはsuが出てきても良い
+; それ以外ではsu以外のすべての単語
+
 word-SI <- (word-ZEI-word / word-BU / ZO-word / LOhU-words-LEhU / ZOI-anything
 	/ any-word) SI-tail 
+
+; zei, bu, zo, lo'u ... le'u, zoiによる構造は一語として扱う
+; .abuも一語
 
 word-BU <- (ZO-word / LOhU-words-LEhU / ZOI-anything / any-word)
 	(BU-tail* ZEI-tail+)* BU-tail+ 
 
+; 例:
+; broda bu bu bu zei brode zei brodi bu
+; これは文字を表す語となる
+
 word-ZEI-word <- (ZO-word / LOhU-words-LEhU / ZOI-anything / any-word)
 	(ZEI-tail* BU-tail+)* ZEI-tail+ 
 
+; 例:
+; broda bu zei brode zei brodi bu bu bu bu bu zei brodo
+; これは一語のブリブラになる
+
 SU-tail <- word-SI* SU 
+
+; ほぼsu
 
 SI-tail <- word-SI* SI 
 
+; ほぼsi
+
 BU-tail <- word-SI* BU 
+
+; ほぼbu
 
 ZEI-tail <- word-SI* ZEI any-word 
 
+; zei + 語
+
 ZO-word <- ZO any-word 
+
+; zo + 語
 
 LOhU-words-LEhU <- LOhU (!LEhU any-word)* LEhU? 
 
+; lo'uの後にle'u以外の語が来て任意のle'uが来る
+; 入れ子には「ならない」
+; 例:
+; lo'u mi do du da de di lo'u ti ta tu broda le'u
+
 ZOI-anything <- ZOI FAhO (!FAhO anything)* FAhO? 
 
+; ここではFAhOは一例
+; 純粋なPEGではzoiは扱えない
+
 C. 単語(セルマホの定義等)
+
+; 変更のあったところだけ見ていこうと思うが抜けがあるかもしれない
+; http://www.lojban.org/tiki/Reduction+of+number+of+selma'o 参照
+;
+; 次はBAI
 
 ; ****** WORDS ****** 
 
@@ -497,6 +545,11 @@ BAI <- Y* &cmavo ( c a h a / p u h i / n u h o / k a h e / c u h e / n a u
 	/ d o h e / j i h e / p i h o / g a u / z u h e / m e h e / r a i )
 	&&post-cmavo 
 
+; CAhA, CUhE, FAhA, KI, PU, TAhE, VA, VEhA, VIhA, ZAhO, ZEhA, ZI
+; がBAIに統合された
+;
+; 次はBY
+
 BAhE <- Y* &cmavo ( b a h e / z a h e ) &post-cmavo 
 
 BE <- Y* &cmavo ( b e ) &post-cmavo 
@@ -515,6 +568,10 @@ BY <- Y* &cmavo ( t e i / f o i / c e h a / l a u / z a i / t a u / j o h o
 	/ r u h o / g e h o / j e h o / l o h a / n a h a / s e h e / t o h a
 	/ g a h e / y h y / b y / c y / d y / f y / g y / j y / k y / l y / m y
 	/ n y / p y / r y / s y / t y / v y / x y / z y ) &post-cmavo 
+
+; FOI, LAU, TEIはBYに統合された
+;
+; 次はJOI
 
 CEI <- Y* &cmavo ( c e i ) &post-cmavo 
 
@@ -563,6 +620,10 @@ JOI <- Y* &cmavo ( f a h u / p i h u / j o i / c e h o / c e / j o h u / k u h a
 	/ t e h a / c u h a / v a h a / n e h o / d e h o / f e h a / s a h o
 	/ r e h a / r i h o / s a h i / p i h a / s i h i ) &post-cmavo 
 
+; A, GUhAは廃止され、BIhI、JA、VUhUはJOIに統合された
+;
+; 次はLE
+
 KE <- Y* &cmavo ( k e ) &post-cmavo 
 
 KEhE <- Y* &cmavo ( k e h e ) &post-cmavo 
@@ -585,6 +646,10 @@ LAhE <- Y* &cmavo ( t u h a / l u h a / l u h o / l a h e / v u h i / l u h i
 
 LE <- Y* &cmavo ( l a i / l a h i / l a / l e i / l o i / l e h i / l o h i
 	/ l e h e / l o h e / l o / l e ) &post-cmavo 
+
+; LAはLEに統合された
+;
+; 次はNAhE
 
 LEhU <- Y* &cmavo ( l e h u ) &post-cmavo 
 
@@ -613,6 +678,10 @@ NA <- Y* &cmavo ( j a h a / n a ) &post-cmavo
 
 NAhE <- Y* &cmavo ( f e h e / m o h i / t o h e / j e h a / n a h e / n o h e )
 	&post-cmavo 
+
+; FEhE, MOhIはNAhEに統合された
+;
+; 次はUI
 
 NIhE <- Y* &cmavo ( n i h e ) &post-cmavo 
 
@@ -668,6 +737,10 @@ UI <- Y* &cmavo ( r a h o / k e h i / g a h o / n a i / p e i / c a i / c u h i
 	/ g a h i / z o h o / b e h u / r i h e / s e h i / s e h a / v u h e
 	/ k i h a / x u / g e h e / b u h o ) &post-cmavo 
 
+; CAI, DAhO, FUhE, FUhO, GAhO, NAI, RAhOはUIに統合された
+;
+; 次はD. 形態論
+
 VAU <- Y* &cmavo ( v a u ) &post-cmavo 
 
 VEI <- Y* &cmavo ( v e i ) &post-cmavo 
@@ -694,72 +767,166 @@ D. 形態論
 
 cmevla <- jbocme / zifcme 
 
+; jbocmeまたはzifcme
+; このふたつを分けている理由は、
+; 多分、おそらく、もしかすると、
+; zifcmeのなかには空白を許すということかもしれない
+
 jbocme <- &zifcme (onset nucleus coda?)+ &space 
+
+; 子記の条件を満たすもののうち、ロジバンの音節構造を満たすものは
+; jbocme
 
 zifcme <- !h (V / VV / y / I / h / C !space)* C &space 
 
+; まず'で始まらない
+; 母音、二重母音、y、i, u, ', 子音等の並びの最後に子音が来て空白が来る
+
 cmavo <- !cmevla !CVCy-lujvo C? I? nucleus (h nucleus)* &post-cmavo 
+
+; cmevlaや以下のようなCVCy-lujvoを否定したうえで
+; 任意の子音、任意の(i/u)、(V/VV/y)が続きその後は('V/'VV/'y)の連続が続く
 
 CVCy-lujvo <- C V C y initial-rafsi* (final-rafsi / gismu / fuhivla
 	/ type-3-fuhivla) 
 
+; CVCyではじまるルジュボ
+
 post-cmavo <- space / cmavo / brivla 
+
+; シュマボの後には空白、またはシュマボ、またはブリブラが来る
 
 brivla <- gismu / !h fuhivla / type-3-fuhivla / lujvo 
 
+; ギスム、フヒブラ、3型フヒブラ、ルジュボがブリブラ
+
 lujvo <- !cmavo !h initial-rafsi+ (final-rafsi / gismu / fuhivla / type-3-fuhivla) 
 
-type-3-fuhivla <- !cmevla classifier syllable  &space 
+; initial-rafsiの連続の後に以下のどれかが来るものはルジュボ
+; 最後のラフシ
+; ギスム
+; フヒブラ
+; 3型フヒブラ
 
-fuhivla <- !cmevla !cmavo !rafsi-string !slinkuhi syllable syllable  &space 
+type-3-fuhivla <- !cmevla classifier syllable+ &space 
+
+; フヒブラの分類用のラフシのついた音節の連続をtype-3-fuhivlaとする
+
+fuhivla <- !cmevla !cmavo !rafsi-string !slinkuhi syllable syllable+ &space 
+
+; cmevlaでもcmavoでも下で定義するrafsi-stringでもslinku'iでも無い
+; 2つ以上の音節の連続に空白が続くものをフヒブラとする
 
 gismu <- full-rafsi &space 
 
+; ギスムはCVCCVまたはCCVCVに空白が続くもの
+
 final-rafsi <- !cmevla short-rafsi &space 
+
+; cmevlaではない3文字ラフシはfinal-rafsi
 
 initial-rafsi <- y-less-rafsi / y-rafsi / fuhivla-rafsi / type-3-rafsi
 	/ brivla-rafsi 
 
+; 下で定義される5つのラフシがinitial-rafsi
+
 brivla-rafsi <- !cmavo !slinkuhi syllable syllable+ h y 
+
+; シュマボでもslinku'iでもない2音節以上のつながりの最後に'yがついたものは
+; brivla-rafsi
 
 type-3-rafsi <- classifier syllable* onset y 
 
+; 下で定義するフヒブラの分類用のラフシに0以上の音節が続いて
+; yで終わる音節がついたものはtype-3-rafsi
+
 fuhivla-rafsi <- !cmavo !rafsi-string !slinkuhi syllable+ onset y 
 
+; シュマボでも以下のラフシの列でもslinku'iでもないもので、
+; 複数の音節にyで終わる音節がついたものはフヒブララフシ
+
 slinkuhi <- C rafsi-string 
+
+; slinku'iは以下のrafsi-stringの前に子音がついたもの
 
 rafsi-string <- y-less-rafsi* (gismu / final-rafsi / y-rafsi / CC y / h y
 	/ full-rafsi h y) 
 
+; yのつかないラフシの列が0以上あり、その後に以下のものが続く
+; ギスム
+; 3文字ラフシ
+; 4文字ラフシ + y, CVCラフシ + y
+; 二重子音 + y
+; 'y
+; ギスムそのもの + 'y
+
 y-less-rafsi <- short-rafsi &rafsi-string 
+
+; yのつかないラフシ
 
 classifier <- C V C CR / CC V CR / C V CR / y-rafsi R 
 
+; フヒブラを分類するためのラフシ
+; 4文字ラフシ + r(n)-hyphen
+; CVCラフシ + r(n)-hyphen
+; y-rafsi + r(n)-hyphen
+
 full-rafsi <- C V C C V / CC V C V 
+
+; ギスムそのもの
 
 y-rafsi <- C V C C y / CC V C y / C V C y 
 
+; 4文字ラフシ + y
+; CVCラフシ + y
+
 short-rafsi <- C V C / CC V / C VV R? / C V h V R? 
+
+; 3文字ラフシ
+; CVC, CCV, CVV, CV'Vの4つ
+; CVVとCV'Vは(多分Vが続くときのためにr-hyphenまたはn-hyphenが取れる)
 
 ; ****** PHONOTACTICS ****** 
 
 syllable <- onset !y nucleus coda? 
 
+; 音節
+; 音節のはじまりの子音 + y以外の母音 + 任意のコーダ
+
 coda <- !onset C 
+
+; 音節のはじまりにならない子音
+; 音節の終わりということでコーダ(音楽の用語?)
 
 onset <- (h / C? I / affricate / sibilant? middle? liquid?) &nucleus 
 
+; 音節のはじまりの子音
+
 sibilant <- c / s !x / j !n !l !r / z !n !l !r 
+
+; 歯擦音
 
 middle <- p / b / f / v / m / t !l / d !l / n !l !r / k / g / x 
 
+; middle?歯擦音と流音のあいだってこと?
+
 liquid <- l / r 
+
+; 流音
 
 CC <- &onset C C 
 
 CR <- C R / r n &C / r l &n / r l &affricate / n l &r 
 
+; 子音 + r-hyphen
+; rと他の子音にはn-hyphen
+; rとnにはl-hyphen
+; rと破擦音にもl-hyphen
+; nとrにもl-hyphen
+
 R <- r &C / n &r 
+
+; r-hyphen
 
 C <- voiced / unvoiced / l / m / n / r 
 
