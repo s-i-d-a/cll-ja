@@ -1007,3 +1007,21 @@ space <- [[.\t\n\r?!\u0020]
 ; slabu gerna のほうは
 ; miprAmido のように文節の切れ目をアクセントで表す方式にも対応していたので、
 ; そこのところは面白かったなと思う。
+
+; 修正する点:
+; Iがかぶっている。
+; I -> SELMAhOIのようにする必要がある。
+; 文末もspaceとする必要がある。
+;
+; Y <- "y"+ !nucleus / space-char
+; non-space <- !space-char .
+; space <- space-char / EOF
+; space-char <- [[.\t\n\r?!\u0020]
+; EOF <- !.
+;
+; cmavoの後に母音が来てはならない
+; post-cmavo <- space / !nucleus cmavo / brivla
+;
+; BAIの定義のなかで、baiやba'iがbaよりも後に来ているので決して読まれない
+; ba等の2文字のcmavoを最後に持ってくるか、または、以下のようにする。
+; ... / b a !h !nucleus / p u !h !nucleus / c a !h !nucleus / ...
