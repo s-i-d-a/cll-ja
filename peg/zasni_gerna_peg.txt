@@ -1025,3 +1025,12 @@ space <- [[.\t\n\r?!\u0020]
 ; BAIの定義のなかで、baiやba'iがbaよりも後に来ているので決して読まれない
 ; ba等の2文字のcmavoを最後に持ってくるか、または、以下のようにする。
 ; ... / b a !h !nucleus / p u !h !nucleus / c a !h !nucleus / ...
+
+; FIhO# selbri FEhU# <- FEhU#? では?
+
+; klama na gi'e prami が klama na ku gi'e prami と解釈されてしまう。
+; 本当ならば klama vau na gi'e prami と解釈されてほしい。
+; NA# !gihek KU#? とすべきか。
+; さらに pu klama や na klama もそれぞれpuku klama や naku klama と解釈
+; されてしまう。
+; NA# !selbri KU#?, tag !selbri KU#? とすべきでは。
