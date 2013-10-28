@@ -267,6 +267,7 @@ fi'u は分数の記号と同じだ。分母も分子も無い、単独の分数
 </pre>
 <a href="#e5.10">例5.10</a>ではいくつか新しい表現を使った。「te'a」は「累乗」、字詞「ny」は文字「n」を表す。メクソの中の字詞は、普通の数学の中で使われる文字と同様、変数を表す。パーサ（構文解析器）は、複数の字詞の列を、単一の字詞と同じものとして扱う。「abc」は単一の字詞と同じであり、「a × b × c」という意味はない。（もちろん、ある場合に変数「abc」が「a × b × c」の結果と等しいと言うことは可能だ。）
 <p>掛け算を記号で書くときは、掛け算の記号を省略することが多いが、ロジバンで口述するときは掛け算の演算子「pi'i」を明示しなければならない。閉じ括弧「ve'o」は省略可能な終端詞だ。<a href="#e5.10">例5.10</a>で1つ目の ve'o は必要だが、2つ目の ve'o は省略できる。また、1つ目の bi'e は省略してもグループ化に影響ないが、2つ目の bi'e との対称性を示すために入れてある。</p>
+<div class="notci"># BY は、メクソの外で使われると、 PA と違って数にならない。 例えば、 {lo ny plise} は {lo plise pe ny} つまり「nが指すものの林檎」であって、「n個の林檎」ではない。この BY を数として扱うには、 vei...(ve'o) で囲む。 例えば {lo vei ny plise} とすれば「n個の林檎」となる。 <a href="#18.18">第18節</a>で言及する mo'e を BY に付けることは可能だが、 mo'e は被演算子 (operand) を構成するものの、そのままではメクソの外で使える数 (quantifier) にならないので、メクソの外で使うには結局 vei...(ve'o) が必要になる。 また意味上も {lo vei mo'e ny plise} は「nが指すもの的な数の林檎」となり、 {lo vei ny plise} の意味とは異なるはずだ。</div>
 
 <a id="18.6" name="18.6"></a><h3>6. 前置型演算子（ポーランド記法の関数）</h3>
 <p>この節では以下のシマヴォが議論される。</p>
@@ -1118,7 +1119,7 @@ pi'ai remna zdani te'ai ni'u pa :  x1 は x2 人/軒 （基準 x3 による）<b
 li mo'e panonoki'o remna fe'i mo'e binoki'o zdani ku du li papiremu pi'i vei ni'e pi'ai remna zdani te'ai ni'u pa ve'o</div>
 </div>
 <div class="notci">
-#  {pi'ai}, {te'ai} は単位を表すタンルを構成するが、これを<a href="http://ja.wikipedia.org/wiki/%E6%AC%A1%E5%85%83%E8%A7%A3%E6%9E%90">次元量一般の表現</a>に適用すると便利である。<br />
+#  {pi'ai}, {te'ai} は単位を表すタンルを構成するが、もし、これを<a href="http://ja.wikipedia.org/wiki/%E6%AC%A1%E5%85%83%E8%A7%A3%E6%9E%90">次元量一般の表現</a>に適用できたら、便利だっただろう。<br />
  質量 M, 長さ L, 時間 T を、それぞれ
  <div class="notci"> ni tilju : x1 は尺度 x2 の質量 M</div>
  <div class="notci"> ni clani : x1 は尺度 x2 の長さ L</div>
